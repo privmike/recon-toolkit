@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
+import argparse
 import sys
 from datetime import datetime
 
-from utils.helpers import create_output_dir
+from utils.helpers import create_output_dir, read_config
 from utils.logger import log
-import utils.helpers
 
 
 
@@ -27,7 +27,7 @@ def processTarget(domain, config):
         "results": {}
     }
 
-    #whoisss
+    #whois
     try:
         whoisScan = WhoisModule(domain,config)
         finalReport["results"]["WHOIS"] = whoisScan.run()
@@ -36,3 +36,19 @@ def processTarget(domain, config):
         finalReport["results"]["WHOIS"] = {"error":str(e)}
 
 def main():
+
+    parser = argparse.ArgumentParser()
+
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("-d","--domain", help="Target domain tunggal(contoh :bugcrowd.com)")
+    group.add_argument("-l","--list", help="Daftar target domain dalam bentuk file")
+
+    args= parser.parse_args()
+
+    config = read_config()
+
+    targets = []
+    if args.domain:
+        for d in args.domain.split(","):
+            targets.append(d.strip())
+    elif args.list:
