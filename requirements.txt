@@ -1,0 +1,5 @@
+argparse
+pyyaml
+dnspython
+requests
+python-whois
