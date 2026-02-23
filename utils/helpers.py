@@ -9,7 +9,7 @@ def create_output_dir(domain):
     if not os.path.exists(path):
         os.makedirs(path)
         log.debug(f"folder output {domain} berhasil dibuat {path}")
-        return path
+    return path
 
 def save_json_report(data, folderPath,):
     timestamp = datetime.now().strftime("%y%m%d_%H%M%S")
