@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import os.path
 import sys
 from datetime import datetime
 
@@ -52,3 +53,38 @@ def main():
         for d in args.domain.split(","):
             targets.append(d.strip())
     elif args.list:
+        if os.path.exists(args.list):
+            with open(args.list,'r') as file:
+                for line in file:
+                    line = line.strip()
+                    if line:
+                        targets.append(line)
+
+        else:
+            log.critical(f"File list domain tidak ditemukan : {args.list}")
+            sys.exit(1)
+
+    if not targets:
+        log.critical(f"Tidak ada target valid yang ditemukan")
+        sys.exit(1)
+
+    log.info(f"total target : {len(targets)}")
+
+    for t in targets:
+        processTarget(t,config)
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        log.critical(f"Error di running main : {str(e)}")
+        sys.exit(1)
+
+    except KeyboardInterrupt:
+        print("\n")
+        log.warning("Tool diberhentikan manual oleh user")
+        sys.exit(0)
+
+
+
+
