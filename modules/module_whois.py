@@ -18,10 +18,9 @@ class WhoisModule:
         results = {}
 
         for tool, func in method:
-            data = func()
+            data = func() #func() adalah function objct, jadi artie itu panggil fungsi yg ada di var func trs jalankan dan simpan hasile di variable data
             if data:
                 results[tool] = data
-
                 if self.mode == "default":
                     return results
 
