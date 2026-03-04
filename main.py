@@ -11,6 +11,7 @@ from utils.logger import log
 
 try:
     from modules.module_whois import WhoisModule
+    from modules.module_dns import DnsModule
 
 except ImportError as e:
     log.critical(f"gagal import module {str(e)}")
@@ -36,6 +37,13 @@ def processTarget(domain, config):
         log.error(f"Modul whois error parah : {str(e)}")
         finalReport["results"]["WHOIS"] = {"error":str(e)}
 
+    #dns
+    try:
+        dnsScan = DnsModule(domain,config)
+        finalReport["results"]["DNS"] = dnsScan.run()
+    except Exception as e:
+        log.error(f"Modul dns error parah : {str(e)}")
+        finalReport["results"]["DNS"] = {"error" : str(e)}
 
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)

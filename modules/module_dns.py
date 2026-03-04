@@ -1,5 +1,7 @@
 
 import dns.resolver
+import requests
+
 from utils.logger import log
 
 
@@ -43,12 +45,39 @@ class DnsModule:
             for r in answers:
                 result.append(r.to_text())
             return result
-        except dns.resolver.NXDOMAIN:
+        except dns.resolver.NXDOMAIN :
+            log.debug(f"dns-python error di record {recordType}, dengan error : domain tidak ditemukan ")
             return None #domain tidak ditemukan
         except dns.resolver.NoAnswer:
+            log.debug(f"dns-python error di record {recordType}, dengan error : record domain tidak ditemukan ")
             return None #tidak ditemukan record tipe ini
         except Exception as e:
             log.debug(f"dns-python error di record {recordType}, dengan error : {str(e)} ")
             return None
 
-    def method_dns_cloudflare:
+    def method_dns_cloudflare(self, recordType):
+
+        try:
+            url = "https://cloudflare-dns.com/dns-query"
+            params = {
+                "name": self.domain,
+                "r_type": recordType
+            }
+            header = {"Accept": "application/dns-json"}
+
+            timeout = 5
+            response = requests.get(url,params=params, headers=header,timeout=timeout)
+
+            if response.status_code ==200:
+                data = response.json()
+                result =[]
+                if "Answer" in data:
+                    for a in data["Answer"]:
+                        result.append(a["data"])
+        except Exception as e:
+            log.debug(f"modul dns cloudflare error L {str(e)}")
+            return None
+
+
+
+
