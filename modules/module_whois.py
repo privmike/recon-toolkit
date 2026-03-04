@@ -1,3 +1,5 @@
+import json
+
 import whois
 from utils.logger import log
 import requests
@@ -5,7 +7,7 @@ class WhoisModule:
     def __init__(self, domain, config):
         self.domain = domain
         self.config = config
-        self.mode = self.config['settings'].get('execution_mode','default')
+        self.mode = self.config.get('settings',{}).get('execution_mode','default')
 
     def run(self):
         log.info(f"Running WHOIS dengan mode {self.mode} untuk {self.domain}")
@@ -32,14 +34,14 @@ class WhoisModule:
         try:
             whoisData = whois.whois(self.domain)
             if whoisData:
-                return dict(whoisData)
+                return json.loads(json.dumps(whoisData, default=str)) #fix error datetime bkn string
         except Exception as e:
             log.debug(f"python-library gagal : {str(e)}")
         return None
 
     def method_WHOIS_API(self):
 
-        apiKey = self.config['api_keys'].get('apilayer_whois')
+        apiKey = self.config.get('api_keys',{}).get('apilayer_whois')
         if not apiKey:
             log.debug(f"api key whois tidak ditemukan")
             return None

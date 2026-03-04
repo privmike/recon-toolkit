@@ -9,9 +9,9 @@ from utils.logger import log
 class DnsModule:
     def __init__(self,domain, config):
         self.domain= domain
-        self.result = {}
         self.config = config
-        self.mode = self.config['settings'].get('execution_mode','default')
+        self.mode = self.config.get('settings',{}).get('execution_mode','default')
+        self.timeout = 5
 
     def run(self):
         log.info(f"Running Module DNS dengan mode {self.mode} untuk {self.domain}")
@@ -40,7 +40,10 @@ class DnsModule:
 
     def method_dns_python(self, recordType):
         try:
-            answers = dns.resolver.resolve(self.domain,recordType)
+            resolver = dns.resolver.Resolver()
+            resolver.timeout = self.timeout
+            resolver.lifetime = self.timeout
+            answers = resolver.resolve(self.domain,recordType)
             result =[]
             for r in answers:
                 result.append(r.to_text())
@@ -61,7 +64,7 @@ class DnsModule:
             url = "https://cloudflare-dns.com/dns-query"
             params = {
                 "name": self.domain,
-                "r_type": recordType
+                "type": recordType
             }
             header = {"Accept": "application/dns-json"}
 
@@ -74,6 +77,9 @@ class DnsModule:
                 if "Answer" in data:
                     for a in data["Answer"]:
                         result.append(a["data"])
+                    return result
+            else :
+                log.debug(f"error di modul dns, metode backup bagian request : {response.status_code}  - {response.text}")
         except Exception as e:
             log.debug(f"modul dns cloudflare error L {str(e)}")
             return None
