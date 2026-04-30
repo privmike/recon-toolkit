@@ -15,8 +15,8 @@ class FindEmailModule:
         log.info(f"Running Module Find Email dengan mode {self.mode} untuk {self.domain}")
 
         method = [
-            (),
-            ()
+            ("theharvester" , self.method_theharvester()),
+            ("emailharvester",self.method_emailharvester())
         ]
 
         result = {}

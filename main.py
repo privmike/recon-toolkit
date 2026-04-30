@@ -48,6 +48,7 @@ def processTarget(domain, config):
         finalReport["results"]["DNS"] = {"error" : str(e)}
 
     #ip
+    try:
         ipscan = IPModule(domain,config)
         finalReport["results"]["IP"] = ipscan.run()
     except Exception as e:
