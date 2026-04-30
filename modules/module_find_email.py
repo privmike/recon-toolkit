@@ -15,14 +15,14 @@ class FindEmailModule:
         log.info(f"Running Module Find Email dengan mode {self.mode} untuk {self.domain}")
 
         method = [
-            ("theharvester" , self.method_theharvester()),
-            ("emailharvester",self.method_emailharvester())
+            ("theharvester" , self.method_theharvester),
+            ("emailharvester",self.method_emailharvester)
         ]
 
         result = {}
         for tool,func in method:
             checkTool = "theHarvester" if "theharvester" in tool.lower() else "emailharvester"
-            if not shutil.which(tool) and not shutil.which(tool.lower()):
+            if not shutil.which(checkTool) and not shutil.which(tool.lower()):
                 log.warning(f"Tool {tool} Not Found.")
                 continue
 
