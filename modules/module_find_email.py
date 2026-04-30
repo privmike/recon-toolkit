@@ -50,7 +50,7 @@ class FindEmailModule:
         try:
             cmd = ["theHarvester", "-d", self.domain, "-b", "all", "-l", "200"]
 
-            process = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
             if process.returncode == 0 or process.stdout:
                 return self.extract_email(process.stdout)
@@ -69,7 +69,7 @@ class FindEmailModule:
         try:
             cmd = ["emailharvester", "-d", self.domain, "-e", "all", "-r","ask"]
 
-            process = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             if process.returncode == 0 or process.stdout:
                 return self.extract_email(process.stdout)
 
