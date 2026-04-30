@@ -67,7 +67,7 @@ class FindEmailModule:
 
     def method_emailharvester(self):
         try:
-            cmd = ["emailharvester", "-d", self.domain, "-e", "all", "r","ask"]
+            cmd = ["emailharvester", "-d", self.domain, "-e", "all", "-r","ask"]
 
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
             if process.returncode == 0 or process.stdout:
