@@ -50,7 +50,10 @@ def processTarget(domain, config):
     #ip
     try:
         ipscan = IPModule(domain,config)
-        finalReport["results"]["IP"] = ipscan.run()
+        tmp = ipscan.run()
+        if tmp == None:
+            tmp = "No Emails Found"
+        finalReport["results"]["IP"] = tmp
     except Exception as e:
         log.error(f"Modul IP error parah : {str(e)}")
         finalReport["results"]["IP"] = {"error" : str(e)}
