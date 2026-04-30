@@ -4,6 +4,7 @@ import os.path
 import sys
 from datetime import datetime
 
+from modules.module_find_email import FindEmailModule
 from modules.module_ip import IPModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
@@ -52,6 +53,15 @@ def processTarget(domain, config):
     except Exception as e:
         log.error(f"Modul IP error parah : {str(e)}")
         finalReport["results"]["IP"] = {"error" : str(e)}
+
+    #find email
+    try:
+        findemail = FindEmailModule(domain,config)
+        finalReport["results"]["Email"] = findemail.run()
+    except Exception as e:
+        log.error(f"Modul Find Email error parah : {str(e)}")
+        finalReport["results"]["Email"] = {"error" : str(e)}
+
 
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
