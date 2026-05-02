@@ -4,9 +4,6 @@ import os.path
 import sys
 from datetime import datetime
 
-from modules.module_email_breach import EmailBreachModule
-from modules.module_find_email import FindEmailModule
-from modules.module_ip import IPModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
 
@@ -15,6 +12,9 @@ from utils.logger import log
 try:
     from modules.module_whois import WhoisModule
     from modules.module_dns import DnsModule
+    from modules.module_email_breach import EmailBreachModule
+    from modules.module_find_email import FindEmailModule
+    from modules.module_ip import IPModule
 
 except ImportError as e:
     log.critical(f"gagal import module {str(e)}")
@@ -53,7 +53,7 @@ def processTarget(domain, config):
         ipscan = IPModule(domain,config)
         tmp = ipscan.run()
         if tmp == None:
-            tmp = "No Emails Found"
+            tmp = "No IP Found"
         finalReport["results"]["IP"] = tmp
     except Exception as e:
         log.error(f"Modul IP error parah : {str(e)}")

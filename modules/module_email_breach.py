@@ -31,7 +31,8 @@ class EmailBreachModule:
                     return result
 
         if not result:
-            log.debug(f"semua metode breach check gagal")
+            log.debug(f"No Breached Email Found")
+            return {"status":"safe", "message":"No Breached Email Found"}
         return None
 
     def method_xposedornot(self, emails):
@@ -46,7 +47,7 @@ class EmailBreachModule:
                     if breach:
                         result[email] = breach
             except Exception as e:
-                log.debug(f"xposedornot error {str(e)}")
+                log.error(f"xposedornot error {str(e)}")
         return result if result else None
 
 
@@ -64,8 +65,8 @@ class EmailBreachModule:
                         if breach:
                             result[email] = [src.get("name", "unknown") for src in breach]
                     else:
-                        log.debug(f"leakcheck error when parsing response")
+                        log.error(f"leakcheck error when parsing response")
             except Exception as e:
-                log.debug(f"leakcheck error {str(e)}")
+                log.error(f"leakcheck error {str(e)}")
         return result if result else None
 

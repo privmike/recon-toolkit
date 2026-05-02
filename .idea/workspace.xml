@@ -4,6 +4,8 @@
     <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix main.py entry breach check module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_find_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_find_email.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +82,7 @@
       <workItem from="1772616164534" duration="5857000" />
       <workItem from="1772626702841" duration="5760000" />
       <workItem from="1777528115244" duration="16896000" />
+      <workItem from="1777690037587" duration="1256000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -225,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777546017587</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix main.py entry breach check module">
+      <option name="closed" value="true" />
+      <created>1777690113857</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1777690113857</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +270,7 @@
     <MESSAGE value="ganti timeout method email find" />
     <MESSAGE value="test modul breack email check" />
     <MESSAGE value="fix modul email breach dan find email" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix modul email breach dan find email" />
+    <MESSAGE value="fix main.py entry breach check module" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix main.py entry breach check module" />
   </component>
 </project>

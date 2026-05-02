@@ -35,8 +35,8 @@ class FindEmailModule:
                     return result
 
         if not result:
-            log.warning(f"Semua metode gagal untuk modul find email")
-            return {"error":"Semua metode find email gagal"}
+            log.warning(f"No Email Found by all method")
+            return {"error":"No Email Found"}
 
         return result
 
@@ -56,12 +56,12 @@ class FindEmailModule:
                 return self.extract_email(process.stdout)
 
             else:
-                log.debug(f"theHarvester error {process.stderr}")
+                log.error(f"theHarvester error {process.stderr}")
 
         except subprocess.TimeoutExpired:
-            log.debug(f"theHarvester Timeout")
+            log.error(f"theHarvester Timeout")
         except Exception as e:
-            log.debug(f"theHarvester error {str(e)}")
+            log.error(f"theHarvester error {str(e)}")
 
         return None
 
@@ -74,11 +74,11 @@ class FindEmailModule:
                 return self.extract_email(process.stdout)
 
             else:
-                log.debug(f"emailharvester error {process.stderr}")
+                log.error(f"emailharvester error {process.stderr}")
         except subprocess.TimeoutExpired:
-            log.debug(f"emailharvester timeout")
+            log.error(f"emailharvester timeout")
         except Exception as e:
-            log.debug(f"emailharvester error {str(e)}")
+            log.error(f"emailharvester error {str(e)}")
         return None
 
 
