@@ -4,6 +4,7 @@ import os.path
 import sys
 from datetime import datetime
 
+from modules.module_email_breach import EmailBreachModule
 from modules.module_find_email import FindEmailModule
 from modules.module_ip import IPModule
 from utils.helpers import create_output_dir, read_config, save_json_report
@@ -59,13 +60,35 @@ def processTarget(domain, config):
         finalReport["results"]["IP"] = {"error" : str(e)}
 
     #find email
+    emailresult = None
     try:
         findemail = FindEmailModule(domain,config)
-        finalReport["results"]["Email"] = findemail.run()
+        emailresult = findemail.run()
+        finalReport["results"]["Email"] =emailresult
     except Exception as e:
         log.error(f"Modul Find Email error parah : {str(e)}")
         finalReport["results"]["Email"] = {"error" : str(e)}
 
+    #email breach check
+    try:
+        emailfinal =set()
+        if isinstance(emailresult, dict) and "error" not in emailresult:
+            for tool, emaillist in emailresult.items():
+                if isinstance(emaillist, list):
+                    for email in emaillist:
+                        emailfinal.add(email)
+
+        targetemail = list(emailfinal)
+        if targetemail:
+            log.info(f"{len(targetemail)} email diterima ke modul breach check")
+            breachcheck = EmailBreachModule(targetemail,config)
+            finalReport["results"]["EmailBreach"] = breachcheck.run()
+        else:
+            log.info(f"No email found. No email ran though breach check module")
+            finalReport["results"]["EmailBreach"] = {"status":"safe", "message":"No target email to check"}
+    except Exception as e:
+        log.error(f"Modul Breach Check error parah : {str(e)}")
+        finalReport["results"]["EmailBreach"] = {"error": str(e)}
 
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)

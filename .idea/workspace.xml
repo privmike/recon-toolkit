@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="test modul breack email check">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix main.py entry breach check module">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_find_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_find_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +79,7 @@
       <workItem from="1772509118212" duration="11422000" />
       <workItem from="1772616164534" duration="5857000" />
       <workItem from="1772626702841" duration="5760000" />
-      <workItem from="1777528115244" duration="14174000" />
+      <workItem from="1777528115244" duration="16896000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -218,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777544819108</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fix modul email breach dan find email">
+      <option name="closed" value="true" />
+      <created>1777546017587</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1777546017587</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +258,7 @@
     <MESSAGE value="test modul find email" />
     <MESSAGE value="ganti timeout method email find" />
     <MESSAGE value="test modul breack email check" />
-    <option name="LAST_COMMIT_MESSAGE" value="test modul breack email check" />
+    <MESSAGE value="fix modul email breach dan find email" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix modul email breach dan find email" />
   </component>
 </project>
