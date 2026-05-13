@@ -32,7 +32,8 @@ class DorkingModule:
         log.info(f"Running Module Google Dorking dengan mode {self.mode} untuk {self.domain}")
 
         method = [
-
+            ("xnldorker",self.method_xnldorker),
+            ("manual_search",self.method_manual_search)
         ]
 
         results = {}
