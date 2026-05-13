@@ -40,7 +40,7 @@ class SubdomainEnumerationModule:
             "subdomains": sort_subdomains
         }
 
-    def method_amass(self):
+
 
 
 
