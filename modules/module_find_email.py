@@ -53,7 +53,11 @@ class FindEmailModule:
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
             if process.returncode == 0 or process.stdout:
-                return self.extract_email(process.stdout)
+                email = self.extract_email(process.stdout)
+                if email:
+                    return email
+                else:
+                    return ["No Email Found"]
 
             else:
                 log.error(f"theHarvester error {process.stderr}")

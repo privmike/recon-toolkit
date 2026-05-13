@@ -1,0 +1,10 @@
+Finding Login Pages: `intitle:"Login" inurl:"admin"`
+Exposing Sensitive Files: `filetype:sql` or `filetype:bak`
+Locating Configuration Files: `filetype:ini` or `filetype:env`
+Discovering Exposed Databases: `inurl:phpmyadmin`
+Finding Backup Files: `filetype:bak` or `filetype:old`
+Uncovering Directory Listings: `intitle:"index of"`
+Searching for Password Files: `inurl:password`
+Locating Exposed Documents: `ext:pdf OR ext:doc OR ext:xls`
+Finding Server Info: `inurl:server-info`
+Searching for Vulnerable Scripts: `inurl:"php?id="`

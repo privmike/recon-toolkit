@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix main.py entry breach check module">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix null return module_email_breach.py, minor logging revision on module_find_email.py">
+      <change afterPath="$PROJECT_DIR$/dorks_list.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/module_find_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_find_email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="22" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -34,6 +42,10 @@
     &quot;accountId&quot;: &quot;33eaba02-b163-4d83-9694-fbe3e8fd51fc&quot;
   }
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -42,18 +54,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "ai.playground.ignore.import.keys.banner.in.settings": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value=":" />
@@ -82,7 +103,10 @@
       <workItem from="1772616164534" duration="5857000" />
       <workItem from="1772626702841" duration="5760000" />
       <workItem from="1777528115244" duration="16896000" />
-      <workItem from="1777690037587" duration="1256000" />
+      <workItem from="1777690037587" duration="1998000" />
+      <workItem from="1778049268251" duration="5344000" />
+      <workItem from="1778124084741" duration="11045000" />
+      <workItem from="1778662745938" duration="596000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -236,7 +260,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777690113857</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fix null return module_email_breach.py, minor logging revision on module_find_email.py">
+      <option name="closed" value="true" />
+      <created>1777691484690</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1777691484690</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +303,7 @@
     <MESSAGE value="test modul breack email check" />
     <MESSAGE value="fix modul email breach dan find email" />
     <MESSAGE value="fix main.py entry breach check module" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix main.py entry breach check module" />
+    <MESSAGE value="fix null return module_email_breach.py, minor logging revision on module_find_email.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix null return module_email_breach.py, minor logging revision on module_find_email.py" />
   </component>
 </project>
