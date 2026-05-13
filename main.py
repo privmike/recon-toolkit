@@ -4,6 +4,7 @@ import os.path
 import sys
 from datetime import datetime
 
+from modules.module_dorking import DorkingModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
 
@@ -90,6 +91,16 @@ def processTarget(domain, config):
         log.error(f"Modul Breach Check error parah : {str(e)}")
         finalReport["results"]["EmailBreach"] = {"error": str(e)}
 
+    #google dorking
+    try:
+        module_dorking = DorkingModule(domain,config)
+        dorks_result = module_dorking.run()
+        finalReport["results"]["Google_Dorking"] = dorks_result
+        if not dorks_result:
+            finalReport["results"]["Google_Dorking"] = {"message":"No dorking result found"}
+    except Exception as e:
+        log.error(f"Modul Google_Dorking error parah : {str(e)}")
+        finalReport["results"]["Google_Dorking"] = {"error": str(e)}
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
     if savedPath:
