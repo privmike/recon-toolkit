@@ -49,6 +49,8 @@ class EmailBreachModule:
                     breach = data.get('breaches', [])
                     if breach:
                         result[email] = breach
+                elif responses.status_code == 404:
+                    None
                 else:
                     log.error(f"xposedornot error http status code {responses.status_code}")
                     return {"error":f"xposedornot error http status code {responses.status_code}"}

@@ -37,7 +37,7 @@ class DorkingModule:
         ]
 
         results = {}
-
+        log.debug(f"Dorks: {self.dorks}")
         for tool,func in method:
             data = func()
             if data:
