@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="extensive fix and mod to module dorking, email breach, email finding">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="dorks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dorks_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dorks_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_dorking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,7 @@
       <workItem from="1778049268251" duration="5344000" />
       <workItem from="1778124084741" duration="11045000" />
       <workItem from="1778662745938" duration="13183000" />
-      <workItem from="1778766208301" duration="10257000" />
+      <workItem from="1778766208301" duration="11886000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -338,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778777406097</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="dorks">
+      <option name="closed" value="true" />
+      <created>1778778557729</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1778778557729</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,6 +390,7 @@
     <MESSAGE value="fix error module_dorking.py" />
     <MESSAGE value="return fix" />
     <MESSAGE value="extensive fix and mod to module dorking, email breach, email finding" />
-    <option name="LAST_COMMIT_MESSAGE" value="extensive fix and mod to module dorking, email breach, email finding" />
+    <MESSAGE value="dorks" />
+    <option name="LAST_COMMIT_MESSAGE" value="dorks" />
   </component>
 </project>

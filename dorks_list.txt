@@ -4,6 +4,6 @@ Database_Files | ext:sql OR ext:db OR ext:sqlite OR ext:dump
 Log_Files | ext:log OR ext:txt inurl:log
 Backup_Files | ext:bak OR ext:backup OR ext:old OR ext:tar.gz
 Wordpress_Config | inurl:wp-config.php.bak OR inurl:wp-config.txt
-Login_Pages | inurl:admin OR inurl:login OR intitle:"admin login"
+Login_Pages | inurl:login
 Git_Repository | inurl:"/.git" OR inurl:"/.svn"
-Sensitive_Docs | ext:pdf OR ext:xlsx OR ext:docx inurl:confidential
+Sensitive_Docs | filetype:pdf OR filetype:xlsx OR filetype:json OR filetype:xml OR filetype:doc

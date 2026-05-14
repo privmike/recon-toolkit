@@ -52,6 +52,7 @@ class DorkingModule:
         return results
 
     def method_xnldorker(self):
+        log.debug(f"Running Module Google Dorking dengan method xnldorker")
         result ={}
         for category, query in self.dorks.items():
             queryString = query.replace("OR", "| ")
@@ -83,7 +84,7 @@ class DorkingModule:
 
     def method_manual_search(self):
         result = {}
-
+        log.debug(f"Running Module Google Dorking dengan method manual search")
 
         for category, query in self.dorks.items():
             try:
