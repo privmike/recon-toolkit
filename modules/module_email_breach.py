@@ -68,12 +68,11 @@ class EmailBreachModule:
                         if breach:
                             result[email] = [src.get("name", "unknown") for src in breach]
                     if data.get("error") == "Not found":
-                        # log.error(f"email {email} tidak ditemukan di leakcheck")
-                        pass
+                            pass
                     else:
                         log.error(f"leakcheck error when parsing response")
                 time.sleep(0.75) #rate limiting
             except Exception as e:
                 log.error(f"leakcheck error {str(e)}")
-        return result if result else None
+        return result if result else {"error":"No Breached Email Found"}
 

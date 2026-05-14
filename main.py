@@ -84,9 +84,9 @@ def processTarget(domain, config):
             log.info(f"{len(targetemail)} email diterima ke modul breach check")
             breachcheck = EmailBreachModule(targetemail,config)
             finalReport["results"]["EmailBreach"] = breachcheck.run()
-        else:
-            log.info(f"No email found. No email ran though breach check module")
-            finalReport["results"]["EmailBreach"] = {"status":"safe", "message":"No target email to check"}
+        # else:
+        #     log.info(f"No email found. No email ran though breach check module")
+        #     finalReport["results"]["EmailBreach"] = {"status":"safe", "message":"No target email to check"}
     except Exception as e:
         log.error(f"Modul Breach Check error parah : {str(e)}")
         finalReport["results"]["EmailBreach"] = {"error": str(e)}

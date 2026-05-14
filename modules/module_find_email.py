@@ -31,7 +31,8 @@ class FindEmailModule:
 
             if data:
                 result[tool] = data
-                if self.mode == "default":
+                is_error= isinstance(data,dict) and "error" in data
+                if self.mode == "default" and not is_error:
                     return result
 
         if not result:
@@ -61,13 +62,13 @@ class FindEmailModule:
 
             else:
                 log.error(f"theHarvester error {process.stderr}")
-
+                return {"error":f"theHarvester error {process.stderr}"}
         except subprocess.TimeoutExpired:
             log.error(f"theHarvester Timeout")
+            return {"error":"theHarvester Timeout"}
         except Exception as e:
             log.error(f"theHarvester error {str(e)}")
-
-        return None
+            return {"error":str(e)}
 
     def method_emailharvester(self):
         try:
@@ -75,15 +76,18 @@ class FindEmailModule:
 
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             if process.returncode == 0 or process.stdout:
-                return self.extract_email(process.stdout)
+                emails =  self.extract_email(process.stdout)
+                return emails if emails else ["No Email Found"]
 
             else:
                 log.error(f"emailharvester error {process.stderr}")
+                return {"error":f"emailharvester error {process.stderr}"}
         except subprocess.TimeoutExpired:
             log.error(f"emailharvester timeout")
+            return {"error":"emailharvester timeout"}
         except Exception as e:
             log.error(f"emailharvester error {str(e)}")
-        return None
+            return {"error":str(e)}
 
 
 
