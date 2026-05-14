@@ -41,14 +41,14 @@ class DorkingModule:
         for tool,func in method:
             data = func()
             if data:
-                results[tool] = results
+                results[tool] = data
                 if self.mode == "default":
                     return results
 
         if not results:
             log.warning(f"No entry found in dorking by all method")
             return {"error":"No interesting search found"}
-
+        return results
 
     def method_xnldorker(self):
         result ={}
@@ -77,7 +77,7 @@ class DorkingModule:
 
         if not result and isError:
             return None
-        if isError and not result:
+        if not isError and not result:
             return {"message":"No interesting search found"}
         return result
 
@@ -91,7 +91,7 @@ class DorkingModule:
                 with DDGS() as ddgs:
                     searchResults = ddgs.text(query, max_results=10)
                     for r in searchResults:
-                        if r['href'] in r:
+                        if 'href' in r:
                             url.append(r['href'])
                 if url:
                     result[category] = url

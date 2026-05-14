@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="final report line missing fix for module_dorking.py">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix error module_email_breach.py,dan module_ip.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_ip.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_dorking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +103,7 @@
       <workItem from="1777690037587" duration="1998000" />
       <workItem from="1778049268251" duration="5344000" />
       <workItem from="1778124084741" duration="11045000" />
-      <workItem from="1778662745938" duration="4874000" />
+      <workItem from="1778662745938" duration="9168000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -298,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778665718477</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fix error module_email_breach.py,dan module_ip.py">
+      <option name="closed" value="true" />
+      <created>1778735622699</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1778735622699</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,6 +344,7 @@
     <MESSAGE value="revisi minor module_find_email.py , add module_dorking.py" />
     <MESSAGE value="method call missing fix module_dorking.py" />
     <MESSAGE value="final report line missing fix for module_dorking.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="final report line missing fix for module_dorking.py" />
+    <MESSAGE value="fix error module_email_breach.py,dan module_ip.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix error module_email_breach.py,dan module_ip.py" />
   </component>
 </project>
