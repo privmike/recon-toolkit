@@ -1,10 +1,9 @@
-Finding Login Pages: `intitle:"Login" inurl:"admin"`
-Exposing Sensitive Files: `filetype:sql` or `filetype:bak`
-Locating Configuration Files: `filetype:ini` or `filetype:env`
-Discovering Exposed Databases: `inurl:phpmyadmin`
-Finding Backup Files: `filetype:bak` or `filetype:old`
-Uncovering Directory Listings: `intitle:"index of"`
-Searching for Password Files: `inurl:password`
-Locating Exposed Documents: `ext:pdf OR ext:doc OR ext:xls`
-Finding Server Info: `inurl:server-info`
-Searching for Vulnerable Scripts: `inurl:"php?id="`
+Directory_Listing | intitle:"index of"
+Exposed_Config | ext:env OR ext:config OR ext:ini OR ext:yml
+Database_Files | ext:sql OR ext:db OR ext:sqlite OR ext:dump
+Log_Files | ext:log OR ext:txt inurl:log
+Backup_Files | ext:bak OR ext:backup OR ext:old OR ext:tar.gz
+Wordpress_Config | inurl:wp-config.php.bak OR inurl:wp-config.txt
+Login_Pages | inurl:admin OR inurl:login OR intitle:"admin login"
+Git_Repository | inurl:"/.git" OR inurl:"/.svn"
+Sensitive_Docs | ext:pdf OR ext:xlsx OR ext:docx inurl:confidential
