@@ -31,8 +31,8 @@ class FindEmailModule:
 
             if data:
                 result[tool] = data
-                is_error= isinstance(data,dict) and "error" in data
-                if self.mode == "default" and not is_error:
+                isError= isinstance(data,dict) and "error" in data
+                if self.mode == "default" and not isError:
                     return result
 
         if not result:
@@ -58,7 +58,7 @@ class FindEmailModule:
                 if email:
                     return email
                 else:
-                    return ["No Email Found"]
+                    return {"message","No Email Found"}
 
             else:
                 log.error(f"theHarvester error {process.stderr}")
@@ -77,7 +77,7 @@ class FindEmailModule:
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
             if process.returncode == 0 or process.stdout:
                 emails =  self.extract_email(process.stdout)
-                return emails if emails else ["No Email Found"]
+                return emails if emails else { "message":"No Email Found"}
 
             else:
                 log.error(f"emailharvester error {process.stderr}")

@@ -42,7 +42,8 @@ class DorkingModule:
             data = func()
             if data:
                 results[tool] = data
-                if self.mode == "default":
+                isError= isinstance(data,dict) and "error" in data
+                if self.mode == "default" and not isError:
                     return results
 
         if not results:
@@ -52,62 +53,63 @@ class DorkingModule:
 
     def method_xnldorker(self):
         result ={}
-        isError = False
         for category, query in self.dorks.items():
             queryString = query.replace("OR", "| ")
             tmpFile = f"tmp_xnldorker_{category}.txt"
             cmd = ["xnldorker" , "-i",queryString, "-es","google,yandex","-o",tmpFile ,"-ow"]
             try:
                 process = subprocess.run(cmd, capture_output=True, text=True, timeout=240)
+                if process.returncode != 0:
+                    log.error(f"Error running xnldorker: {process.stderr}")
+                    return { "error":f"Error running xnldorker: {process.stderr}"}
                 if os.path.exists(tmpFile):
                     with open(tmpFile, 'r') as file:
                         lines = [line.strip() for line in file.readlines() if line.strip()]
                         if lines:
                             result[category] = lines
-                        os.remove(tmpFile)
+
             except subprocess.TimeoutExpired:
                 log.error(f"Xnldorker Timeout")
-                isError = True
+                return {"error":"Xnldorker Timeout"}
 
             except Exception as e:
                 log.error(f"Error running xnldorker: {str(e)}")
-                isError = True
-            if os.path.exists(tmpFile):
-                os.remove(tmpFile)
+                return {"error":f"xnldorker error {str(e)}"}
+            finally:
+                if os.path.exists(tmpFile):
+                    os.remove(tmpFile) #hati hati klo gak ada permission bisa crash disini
 
-        if not result and isError:
-            return None
-        if not isError and not result:
-            return {"message":"No interesting search found"}
-        return result
+        return result if result else {"message":"No interesting search found"}
 
     def method_manual_search(self):
         result = {}
-        isError = False
+
 
         for category, query in self.dorks.items():
             try:
                 url = []
                 with DDGS() as ddgs:
-                    searchResults = ddgs.text(query, max_results=10)
-                    for r in searchResults:
-                        if 'href' in r:
-                            url.append(r['href'])
-                if url:
-                    result[category] = url
-
-                time.sleep(random.randint(1,2)) #mencoba membuat delay yang asymetris untuk mencoba menghindari bot detection
-
+                    try:
+                        searchResults = ddgs.text(query, max_results=10)
+                        for r in searchResults:
+                            if 'href' in r:
+                                url.append(r['href'])
+                        if url:
+                            result[category] = url
+                        time.sleep(random.randint(1,2)) #mencoba membuat delay yang asymetris untuk mencoba menghindari bot detection
+                    except Exception as esearch:
+                        log.error(f"Error running search engine: {str(esearch)}")
+                        continue
             except Exception as e:
                 log.error(f"Error running manual search: {str(e)}")
-                isError= True
+                return {"error":f"manual search google dork error {str(e)}"}
 
-        if not result and isError:
-            return None
-        if not result and not isError:
-            return {"message":"No interesting search found"}
+        # if not result and isError:
+        #     return None
+        # if not result and not isError:
+        #     return {"message":"No interesting search found"}
 
-        return result
+        return result if result else {"message":"No interesting search found"}
 
 
 

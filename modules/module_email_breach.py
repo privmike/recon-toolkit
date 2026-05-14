@@ -1,5 +1,5 @@
 import time
-from http.client import responses
+
 
 import requests
 
@@ -28,7 +28,8 @@ class EmailBreachModule:
 
             if data:
                 result[tool] = data
-                if self.mode =="default":
+                isError= isinstance(data,dict) and "error" in data
+                if self.mode =="default" and not isError:
                     return result
 
         if not result:
@@ -48,9 +49,13 @@ class EmailBreachModule:
                     breach = data.get('breaches', [])
                     if breach:
                         result[email] = breach
+                else:
+                    log.error(f"xposedornot error http status code {responses.status_code}")
+                    return {"error":f"xposedornot error http status code {responses.status_code}"}
             except Exception as e:
                 log.error(f"xposedornot error {str(e)}")
-        return result if result else None
+                return {"error":f"xposedornot error {str(e)}"}
+        return result if result else {"message":"No Breached Email Found"}
 
 
 
@@ -67,12 +72,17 @@ class EmailBreachModule:
                         breach = data.get('sources', [])
                         if breach:
                             result[email] = [src.get("name", "unknown") for src in breach]
-                    if data.get("error") == "Not found":
-                            pass
+                    elif data.get("error") == "Not found":
+                            None
                     else:
                         log.error(f"leakcheck error when parsing response")
+                        return {"error":f"leakcheck error when parsing response"}
+                else:
+                    log.error(f"leakcheck error http status code {responses.status_code}")
+                    return {"error":f"leakcheck error http status code {responses.status_code}"}
                 time.sleep(0.75) #rate limiting
             except Exception as e:
                 log.error(f"leakcheck error {str(e)}")
-        return result if result else {"error":"No Breached Email Found"}
+                return {"error":f"leakcheck error {str(e)}"}
+        return result if result else {"message":"No Breached Email Found"}
 
