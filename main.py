@@ -101,6 +101,12 @@ def processTarget(domain, config):
     except Exception as e:
         log.error(f"Modul Google_Dorking error parah : {str(e)}")
         finalReport["results"]["Google_Dorking"] = {"error": str(e)}
+
+
+
+    #subdomain enumeration
+
+
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
     if savedPath:

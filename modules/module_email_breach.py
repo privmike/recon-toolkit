@@ -1,3 +1,4 @@
+import time
 from http.client import responses
 
 import requests
@@ -33,9 +34,10 @@ class EmailBreachModule:
         if not result:
             log.debug(f"No Breached Email Found")
             return {"status":"safe", "message":"No Breached Email Found"}
-        return None
+        return result
 
     def method_xposedornot(self, emails):
+        log.debug(f"Running Module Breach Email dengan method xposedornot")
         result = {}
         for email in emails:
             try:
@@ -53,6 +55,7 @@ class EmailBreachModule:
 
 
     def method_leakcheck(self,emails):
+        log.debug(f"Running Module Breach Email dengan method leakcheck")
         result={}
         for email in emails:
             try:
@@ -64,8 +67,12 @@ class EmailBreachModule:
                         breach = data.get('sources', [])
                         if breach:
                             result[email] = [src.get("name", "unknown") for src in breach]
+                    if data.get("error") == "Not found":
+                        # log.error(f"email {email} tidak ditemukan di leakcheck")
+                        pass
                     else:
                         log.error(f"leakcheck error when parsing response")
+                time.sleep(0.75) #rate limiting
             except Exception as e:
                 log.error(f"leakcheck error {str(e)}")
         return result if result else None

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="method call missing fix module_dorking.py">
-      <change afterPath="$PROJECT_DIR$/modules/module_subdomain_enumeration.py" afterDir="false" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="final report line missing fix for module_dorking.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_ip.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ip.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="22" />
+    <option name="cachedIndexableFilesCount" value="23" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -104,7 +104,7 @@
       <workItem from="1777690037587" duration="1998000" />
       <workItem from="1778049268251" duration="5344000" />
       <workItem from="1778124084741" duration="11045000" />
-      <workItem from="1778662745938" duration="2893000" />
+      <workItem from="1778662745938" duration="4874000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -282,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778663704538</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="final report line missing fix for module_dorking.py">
+      <option name="closed" value="true" />
+      <created>1778665700218</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1778665700218</updated>
+    </task>
+    <task id="LOCAL-00024" summary="final report line missing fix for module_dorking.py">
+      <option name="closed" value="true" />
+      <created>1778665718477</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1778665718477</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +336,7 @@
     <MESSAGE value="fix null return module_email_breach.py, minor logging revision on module_find_email.py" />
     <MESSAGE value="revisi minor module_find_email.py , add module_dorking.py" />
     <MESSAGE value="method call missing fix module_dorking.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="method call missing fix module_dorking.py" />
+    <MESSAGE value="final report line missing fix for module_dorking.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="final report line missing fix for module_dorking.py" />
   </component>
 </project>

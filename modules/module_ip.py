@@ -28,9 +28,10 @@ class IPModule:
 
         if not results:
             log.debug(f"semua metode ip gagal")
-        return None
+        return results
 
     def method_ip_api(self):
+        log.info(f"Running IP-API")
         try:
             url = f"http://ip-api.com/json/{self.domain}?fields=status,message,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,isp,org,as,query"
             response = requests.get(url, timeout=self.timeout)
@@ -46,6 +47,7 @@ class IPModule:
             return None
 
     def method_freeipapi(self):
+        log.info(f"Running freeipapi")
         try:
             try:
                 ip = socket.gethostbyname(self.domain)
