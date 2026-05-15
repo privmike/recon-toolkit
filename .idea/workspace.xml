@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="dorks">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="dorks fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dorks_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dorks_list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/module_dorking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +104,9 @@
       <workItem from="1778049268251" duration="5344000" />
       <workItem from="1778124084741" duration="11045000" />
       <workItem from="1778662745938" duration="13183000" />
-      <workItem from="1778766208301" duration="11886000" />
+      <workItem from="1778766208301" duration="12227000" />
+      <workItem from="1778828564456" duration="2626000" />
+      <workItem from="1778851404028" duration="403000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -347,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778778557729</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="dorks fix">
+      <option name="closed" value="true" />
+      <created>1778780510007</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1778780510007</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +375,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="initial commit" />
     <MESSAGE value="initial setup" />
     <MESSAGE value="main" />
     <MESSAGE value="bug fix create ouput dir" />
@@ -391,6 +399,7 @@
     <MESSAGE value="return fix" />
     <MESSAGE value="extensive fix and mod to module dorking, email breach, email finding" />
     <MESSAGE value="dorks" />
-    <option name="LAST_COMMIT_MESSAGE" value="dorks" />
+    <MESSAGE value="dorks fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="dorks fix" />
   </component>
 </project>
