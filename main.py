@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 
 from modules.module_dorking import DorkingModule
+from modules.module_subdomain_enumeration import SubdomainEnumerationModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
 
@@ -105,6 +106,13 @@ def processTarget(domain, config):
 
 
     #subdomain enumeration
+    try:
+        module_subdomain = SubdomainEnumerationModule(domain,config)
+        subdomain_result = module_subdomain.run()
+        finalReport["results"]["Subdomain_Enumeration"] = subdomain_result
+    except Exception as e:
+        log.error(f"Modul Subdomain_Enumeration error parah : {str(e)}")
+        finalReport["results"]["Subdomain_Enumeration"] = {"error": str(e)}
 
 
     finalReport["finish_time"] = str(datetime.now())

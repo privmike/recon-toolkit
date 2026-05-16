@@ -60,7 +60,6 @@ class DorkingModule:
             cmd = ["xnldorker" , "-i",queryString, "-es","google,yandex","-o",tmpFile ,"-ow"]
             try:
                 process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
-                log.debug(f"xnldorker output: for {category}:  {process.stdout}")
                 if process.returncode != 0:
                     log.error(f"Error running xnldorker: {process.stderr}")
                     return { "error":f"Error running xnldorker: {process.stderr}"}
@@ -98,9 +97,12 @@ class DorkingModule:
                                 url.append(r['href'])
                         if url:
                             result[category] = url
-                        time.sleep(random.randint(1,2)) #mencoba membuat delay yang asymetris untuk mencoba menghindari bot detection
+                        time.sleep(random.randint(3,5)) #mencoba membuat delay yang asymetris untuk mencoba menghindari bot detection
                     except Exception as esearch:
-                        log.error(f"Error running search engine: {str(esearch)}")
+                        if "No results found" in str(esearch):
+                            log.debug(f"Aman: Tidak ada celah ditemukan untuk kategori ini.")
+                        else:
+                            log.error(f"Error running search engine: {str(esearch)}")
                         continue
             except Exception as e:
                 log.error(f"Error running manual search: {str(e)}")
