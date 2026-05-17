@@ -6,6 +6,7 @@ from datetime import datetime
 
 from modules.module_dorking import DorkingModule
 from modules.module_subdomain_enumeration import SubdomainEnumerationModule
+from modules.module_subdomain_status_check import SubdomainStatusCheckModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
 
@@ -106,13 +107,35 @@ def processTarget(domain, config):
 
 
     #subdomain enumeration
+    subdomains = []
     try:
         module_subdomain = SubdomainEnumerationModule(domain,config)
         subdomain_result = module_subdomain.run()
         finalReport["results"]["Subdomain_Enumeration"] = subdomain_result
+        subdomains = subdomain_result.get("subdomains",[])
     except Exception as e:
         log.error(f"Modul Subdomain_Enumeration error parah : {str(e)}")
         finalReport["results"]["Subdomain_Enumeration"] = {"error": str(e)}
+
+    #subdomain status check
+    subdomain_active = []
+    if subdomains:
+        try:
+            module_subdomain_status_check = SubdomainStatusCheckModule(domain,config,subdomains)
+            status_check_result = module_subdomain_status_check.run()
+            finalReport["results"]["Subdomain_Status_Check"] = status_check_result
+            if isinstance(status_check_result,dict):
+                if "method_httpx_toolkit" in status_check_result and isinstance(status_check_result["method_httpx_toolkit"],list):
+                    subdomain_active.extend(status_check_result["method_httpx_toolkit"])
+                elif "method_httprobe" in status_check_result and isinstance(status_check_result["method_httprobe"],list):
+                    subdomain_active.extend(status_check_result["method_httprobe"])
+        except Exception as e:
+            log.error(f"Modul Subdomain_Status_Check error parah : {str(e)}")
+            finalReport["results"]["Subdomain_Status_Check"] = {"error": str(e)}
+    else:
+        log.info(f"Tidak ada subdomain yang ditemukan")
+        finalReport["results"]["Subdomain_Status_Check"] = {"message":"No Subdomain Found"}
+
 
 
     finalReport["finish_time"] = str(datetime.now())
