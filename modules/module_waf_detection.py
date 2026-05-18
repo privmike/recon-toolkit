@@ -1,5 +1,6 @@
 import json
 import os.path
+import shutil
 import subprocess
 import tempfile
 
@@ -24,7 +25,7 @@ class WafDetectionModule:
             if isinstance(item, dict):
                 hostname = item.get('url','')
                 if hostname:
-                    if not hostname.startswith('http://','https://'):
+                    if not hostname.startswith(('http://','https://')):
                         hostname = f'http://{hostname}'
                     host_list.append(hostname)
         if not host_list:
@@ -40,17 +41,22 @@ class WafDetectionModule:
             return {"error":f"Error creating temporary file: {str(e)}"}
 
         method =[
-            ("method_whatw00f",self.method_whatw00f),
+            ("method_wafw00f",self.method_wafw00f),
             ("method_whatwaf", self.method_whatwaf)
         ]
         result = {}
+        try:
+            for tool,func in method:
+                data = func(tmp_input_file)
+                if data:
+                    result[tool] = data
+                    isError= isinstance(data, dict) and 'error' in data
+                    if self.mode == 'default' and not isError:
+                        return result
+        finally:
+            if tmp_input_file and os.path.exists(tmp_input_file):
+                os.remove(tmp_input_file)
 
-        for tool,func in method:
-            data = func()
-            if data:
-                isError= isinstance(data, dict) and 'error' in data
-                if self.mode == 'default' and not isError:
-                    return result
         if not result:
             log.debug(f"No WAF Found")
             return {"message":"No WAF Found"}
@@ -58,8 +64,9 @@ class WafDetectionModule:
         return result
 
 
-    def method_whatw00f(self, tmp_input_file):
-        log.debug(f"Running Module WAF Detection dengan method whatw00f")
+
+    def method_wafw00f(self, tmp_input_file):
+        log.debug(f"Running Module WAF Detection dengan method wafw00f")
 
         result = {}
 
@@ -68,26 +75,26 @@ class WafDetectionModule:
             with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.json') as json_output_file:
                 temp_json_output_file = json_output_file.name
 
-            cmd = ['whatw00f', '-i', tmp_input_file, '-o', temp_json_output_file, '-f','json','-a','--no-colors']
+            cmd = ['wafw00f', '-i', tmp_input_file, '-o', temp_json_output_file, '-f','json','-a','--no-colors']
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
             if process.returncode == 0:
                 if os.path.exists(temp_json_output_file) and os.path.getsize(temp_json_output_file) >0:
                     with open(temp_json_output_file, 'r') as file:
                         data = json.load(file)
-                    log.debug(f"Success parsing whatw00f json file output")
+                    log.debug(f"Success parsing wafw00f json file output")
                     return data
                 else:
-                    log.debug(f"whatw00f json file output is empty")
-                    return {"error":"whatw00f json file output is empty"}
+                    log.debug(f"wafw00f json file output is empty")
+                    return {"error":"wafw00f json file output is empty"}
             else:
-                log.error(f"Error running whatw00f: {process.stderr}")
-                return {"error":f"Error running whatw00f: {process.stderr}"}
+                log.error(f"Error running wafw00f: {process.stderr}")
+                return {"error":f"Error running wafw00f: {process.stderr}"}
         except subprocess.TimeoutExpired:
-            log.error(f"whatw00f Timeout")
-            return {"error":"whatw00f Timeout"}
+            log.error(f"wafw00f Timeout")
+            return {"error":"wafw00f Timeout"}
         except Exception as e:
-            log.error(f"Error running whatw00f: {str(e)}")
-            return {"error":f"whatw00f error {str(e)}"}
+            log.error(f"Error running wafw00f: {str(e)}")
+            return {"error":f"wafw00f error {str(e)}"}
         finally:
             if temp_json_output_file and os.path.exists(temp_json_output_file):
                 os.remove(temp_json_output_file)
@@ -114,6 +121,9 @@ class WafDetectionModule:
                 else:
                     log.debug(f"whatwaf json file output is empty")
                     return {"error":"whatwaf json file output is empty"}
+            else:
+                log.error(f"Error running whatwaf: {process.stderr}")
+                return {"error":f"Error running whatwaf: {process.stderr}"}
         except subprocess.TimeoutExpired:
             log.error(f"whatwaf Timeout")
             return {"error":"whatwaf Timeout"}
@@ -122,7 +132,7 @@ class WafDetectionModule:
             return {"error":f"whatwaf error {str(e)}"}
         finally:
             if tmp_dir and os.path.exists(tmp_dir):
-                os.rmdir(tmp_dir)
+                shutil.rmtree(tmp_dir)
 
 
 
