@@ -178,29 +178,37 @@ class NmapModule:
                                         if len(splited_line) >=4 and '*EXPLOIT*' in splited_line[3]:
                                             isExploit = True
 
-                                        if not isExploit:
-                                            curr_cve = {
-                                                'id': vuln_id,
-                                                'cvss': cvss_score,
-                                                'url': url,
-                                                'exploits': []
-                                            }
-                                            vulnerability.append(curr_cve)
-                                        else:
-                                            exploit_data = {
-                                                'id': vuln_id,
-                                                'url': url
-                                            }
-                                            if curr_cve is not None:
-                                                curr_cve['exploits'].append(exploit_data)
-                                            else: #siap2 edge case aneh klo bug exploit tanpa parent cve
-                                                curr_cve= {
-                                                    'id':f'Unknown CVE Parent - {vuln_id}',
-                                                    'cvss': cvss_score,
-                                                    'url':url,
-                                                    'exploits': [exploit_data]
-                                                }
-                                                vulnerability.append(curr_cve)
+                                        vulnerability.append({
+                                            'id':vuln_id,
+                                            'cvss':cvss_score,
+                                            'url':url,
+                                            'type': 'Exploit' if isExploit else 'Vulnerability/CVE'
+                                        })
+
+                                        # if not isExploit:
+                                        #     curr_cve = {
+                                        #         'id': vuln_id,
+                                        #         'cvss': cvss_score,
+                                        #         'url': url,
+                                        #         'exploits': []
+                                        #     }
+                                        #     vulnerability.append(curr_cve)
+                                        # else:
+                                        #     exploit_data = {
+                                        #         'id': vuln_id,
+                                        #         'url': url
+                                        #     }
+                                        #     if curr_cve is not None:
+                                        #         curr_cve['exploits'].append(exploit_data)
+                                        #     else: #siap2 edge case aneh klo bug exploit tanpa parent cve
+                                        #         curr_cve= {
+                                        #             'id':f'Unknown CVE Parent - {vuln_id}',
+                                        #             'cvss': cvss_score,
+                                        #             'url':url,
+                                        #             'exploits': [exploit_data]
+                                        #         }
+                                        #         vulnerability.append(curr_cve)
+
 
 
                         port_data['cve'] = vulnerability
