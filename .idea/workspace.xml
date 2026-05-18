@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main.py disable email and gogole dorking for testing only">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main.py test run nmap pakai web petra" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,7 +107,7 @@
       <workItem from="1778905376194" duration="8553000" />
       <workItem from="1778929871566" duration="10525000" />
       <workItem from="1779012233720" duration="14253000" />
-      <workItem from="1779067181062" duration="8616000" />
+      <workItem from="1779067181062" duration="8926000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -400,7 +397,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779077254668</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="main.py test run nmap pakai web petra">
+      <option name="closed" value="true" />
+      <created>1779079490642</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1779079490642</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -419,7 +424,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="initial done module dns blm ditest" />
     <MESSAGE value="modul ip blm selsasi" />
     <MESSAGE value="modul ip selsasi blm test" />
     <MESSAGE value="report buat modul ip kelupaan" />
@@ -444,6 +448,7 @@
     <MESSAGE value="alpha module_subdomain_status_check.py" />
     <MESSAGE value="alpha module_nmap.py" />
     <MESSAGE value="main.py disable email and gogole dorking for testing only" />
-    <option name="LAST_COMMIT_MESSAGE" value="main.py disable email and gogole dorking for testing only" />
+    <MESSAGE value="main.py test run nmap pakai web petra" />
+    <option name="LAST_COMMIT_MESSAGE" value="main.py test run nmap pakai web petra" />
   </component>
 </project>

@@ -119,7 +119,7 @@ def processTarget(domain, config):
     #     finalReport["results"]["Subdomain_Enumeration"] = {"error": str(e)}
     #
     # #subdomain status check
-    subdomain_active = ['petra.ac.id']
+    subdomain_active = [{'url', 'petra.ac.id'}]
     # if subdomains:
     #     try:
     #         module_subdomain_status_check = SubdomainStatusCheckModule(domain,config,subdomains)
