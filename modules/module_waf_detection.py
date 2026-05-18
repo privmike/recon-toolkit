@@ -108,7 +108,7 @@ class WafDetectionModule:
         try:
             tmp_dir = tempfile.mkdtemp()
 
-            cmd = ['whatwaf','-F','-J','-ra', '-t','5','--skip','-l',tmp_input_file,'-o',tmp_dir,'--force-file']
+            cmd = ['whatwaf','-F','-J','--ra', '-t','5','--skip','-l',tmp_input_file,'-o',tmp_dir,'--force-file']
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
             if process.returncode ==0:
                 json_output_files = [f for f in os.listdir(tmp_dir) if f.endswith('.json')] #nyari file json di dir output hopefully ga salah
