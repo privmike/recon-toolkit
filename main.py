@@ -64,47 +64,47 @@ def processTarget(domain, config):
         finalReport["results"]["IP"] = {"error" : str(e)}
 
     #find email
-    emailresult = None
-    try:
-        findemail = FindEmailModule(domain,config)
-        emailresult = findemail.run()
-        finalReport["results"]["Email"] =emailresult
-    except Exception as e:
-        log.error(f"Modul Find Email error parah : {str(e)}")
-        finalReport["results"]["Email"] = {"error" : str(e)}
-
-    #email breach check
-    try:
-        emailfinal =set()
-        if isinstance(emailresult, dict) and "error" not in emailresult:
-            for tool, emaillist in emailresult.items():
-                if isinstance(emaillist, list):
-                    for email in emaillist:
-                        emailfinal.add(email)
-
-        targetemail = list(emailfinal)
-        if targetemail:
-            log.info(f"{len(targetemail)} email diterima ke modul breach check")
-            breachcheck = EmailBreachModule(targetemail,config)
-            finalReport["results"]["EmailBreach"] = breachcheck.run()
-        # else:
-        #     log.info(f"No email found. No email ran though breach check module")
-        #     finalReport["results"]["EmailBreach"] = {"status":"safe", "message":"No target email to check"}
-    except Exception as e:
-        log.error(f"Modul Breach Check error parah : {str(e)}")
-        finalReport["results"]["EmailBreach"] = {"error": str(e)}
-
-    #google dorking
-    try:
-        module_dorking = DorkingModule(domain,config)
-        dorks_result = module_dorking.run()
-        finalReport["results"]["Google_Dorking"] = dorks_result
-        if not dorks_result:
-            finalReport["results"]["Google_Dorking"] = {"message":"No dorking result found"}
-    except Exception as e:
-        log.error(f"Modul Google_Dorking error parah : {str(e)}")
-        finalReport["results"]["Google_Dorking"] = {"error": str(e)}
-
+    # emailresult = None
+    # try:
+    #     findemail = FindEmailModule(domain,config)
+    #     emailresult = findemail.run()
+    #     finalReport["results"]["Email"] =emailresult
+    # except Exception as e:
+    #     log.error(f"Modul Find Email error parah : {str(e)}")
+    #     finalReport["results"]["Email"] = {"error" : str(e)}
+    #
+    # #email breach check
+    # try:
+    #     emailfinal =set()
+    #     if isinstance(emailresult, dict) and "error" not in emailresult:
+    #         for tool, emaillist in emailresult.items():
+    #             if isinstance(emaillist, list):
+    #                 for email in emaillist:
+    #                     emailfinal.add(email)
+    #
+    #     targetemail = list(emailfinal)
+    #     if targetemail:
+    #         log.info(f"{len(targetemail)} email diterima ke modul breach check")
+    #         breachcheck = EmailBreachModule(targetemail,config)
+    #         finalReport["results"]["EmailBreach"] = breachcheck.run()
+    #     # else:
+    #     #     log.info(f"No email found. No email ran though breach check module")
+    #     #     finalReport["results"]["EmailBreach"] = {"status":"safe", "message":"No target email to check"}
+    # except Exception as e:
+    #     log.error(f"Modul Breach Check error parah : {str(e)}")
+    #     finalReport["results"]["EmailBreach"] = {"error": str(e)}
+    #
+    # #google dorking
+    # try:
+    #     module_dorking = DorkingModule(domain,config)
+    #     dorks_result = module_dorking.run()
+    #     finalReport["results"]["Google_Dorking"] = dorks_result
+    #     if not dorks_result:
+    #         finalReport["results"]["Google_Dorking"] = {"message":"No dorking result found"}
+    # except Exception as e:
+    #     log.error(f"Modul Google_Dorking error parah : {str(e)}")
+    #     finalReport["results"]["Google_Dorking"] = {"error": str(e)}
+    #
 
 
     #subdomain enumeration
