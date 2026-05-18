@@ -60,7 +60,9 @@ class SubdomainStatusCheckModule:
                             if len(split)>1:
                                 tech_string = split[1].replace("]","")
                                 tech = [tech.strip() for tech in tech_string.split(",")]
-                            subdomain_online.append({"url":url,"technologies":tech})
+                            split_protocol = url.split("//")
+                            clear_url = split_protocol[1]
+                            subdomain_online.append({"url":clear_url,"technologies":tech})
                 return subdomain_online
             else:
                 log.error(f"Error running http-toolkit: {process.stderr}")

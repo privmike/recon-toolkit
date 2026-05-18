@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 
 from modules.module_dorking import DorkingModule
+from modules.module_nmap import NmapModule
 from modules.module_subdomain_enumeration import SubdomainEnumerationModule
 from modules.module_subdomain_status_check import SubdomainStatusCheckModule
 from utils.helpers import create_output_dir, read_config, save_json_report
@@ -135,6 +136,20 @@ def processTarget(domain, config):
     else:
         log.info(f"Tidak ada subdomain yang ditemukan")
         finalReport["results"]["Subdomain_Status_Check"] = {"message":"No Subdomain Found"}
+
+    #nmap
+    if subdomain_active:
+        try:
+            log.info(f"({len(subdomain_active)}) subdomain aktif diterima modul nmap")
+            module_nmap = NmapModule(domain,config,subdomain_active)
+            nmap_result = module_nmap.run()
+            finalReport['results']['Nmap'] = nmap_result
+        except Exception as e:
+            log.error(f"Modul Nmap error parah : {str(e)}")
+            finalReport['results']['Nmap'] = {"error": str(e)}
+    else:
+        log.info(f"Tidak ada subdomain aktif yang diterima nmap")
+        finalReport['results']['Nmap'] = {"message":"No Subdomain Found to scan with Nmap"}
 
 
 
