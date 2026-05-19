@@ -114,12 +114,20 @@ class WafDetectionModule:
                 json_output_files = [f for f in os.listdir(tmp_dir) if f.endswith('.json')] #nyari file json di dir output hopefully ga salah
                 if json_output_files:
                     combined_data = []
+                    decoder = json.JSONDecoder()
                     for f in json_output_files:
                         hit_files = os.path.join(tmp_dir,f)
                         try:
+                            if os.path.exists(hit_files) and os.path.getsize(hit_files) <=0 :
+                                continue
                             with open(hit_files,'r') as file:
-                                data= json.load(file)
-                                combined_data.append(data)
+                                data= file.read()
+                            position=0
+                            while position <len(data):
+                                obj, index = decoder.raw_decode(data,position)
+                                position = index
+                                combined_data.append(obj)
+
                         except Exception as e:
                             log.error(f"Error parsing {hit_files}: {str(e)}")
                             return {"error":f"Error parsing {hit_files}: {str(e)}"} #ganti pakai continue kalauy mau handle partial failure dengan cara bisa lanjut ke file berikutnya dan gak berhenti di file yg gagal
