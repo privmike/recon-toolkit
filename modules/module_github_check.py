@@ -1,3 +1,7 @@
+import json
+import subprocess
+from typing import Text
+
 from utils.logger import log
 
 
@@ -18,12 +22,12 @@ class GithubCheckModule:
             return {"error":"Input github repo cannot be empty"}
 
         method = [
-            (),
-            ()
+            ("method_trufflehog",self.methid_trufflehog),
+            ("method_gitleaks",self.method_gitleaks)
         ]
 
         for tool,func in method:
-            data = func(self.github_repo)
+            data = func()
             if data:
                 results[tool] = data
                 isError = isinstance(data, dict) and 'error' in data
@@ -41,7 +45,39 @@ class GithubCheckModule:
     def methid_trufflehog(self):
         log.debug(f"Running Module Github Check dengan method trufflehog")
 
+        cmd = ['trufflehog', 'github','--result=verified','repo',self.github_repo,'-j','--no-color']
 
+        try:
+            process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+            if process.returncode == 0:
+                findings = []
+                raw_output = process.stdout
+
+                if not raw_output:
+                    log.debug(f"Trufflehog output is Empty")
+                    return []
+
+                lines = raw_output.splitlines()
+
+                for line in lines:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                        if "SourceMetadata" in data or "DetectorName" in data:
+                            findings.append(data)
+                    except json.JSONDecodeError:
+                        log.debug(f"failed to parse json output from trufflehog")
+                        return {"error":"failed to parse json output from trufflehog"}
+                log.debug(f"Trufflehog output: {len(findings)} findings")
+                return findings
+        except subprocess.TimeoutExpired:
+            log.error(f"Trufflehog Timeout")
+            return {"error":"Trufflehog Timeout"}
+        except Exception as e:
+            log.error(f"Error running trufflehog: {str(e)}")
+            return {"error":f"trufflehog error {str(e)}"}
 
 
     def method_gitleaks(self):

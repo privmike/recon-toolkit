@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="debug module_waf_detection.py">
-      <change afterPath="$PROJECT_DIR$/modules/module_github_check.py" afterDir="false" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix output module_waf_detection.py&#10;&#10;skeleton module_github_check.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_waf_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_waf_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_github_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_github_check.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +112,7 @@
       <workItem from="1778929871566" duration="10525000" />
       <workItem from="1779012233720" duration="14253000" />
       <workItem from="1779067181062" duration="29996000" />
-      <workItem from="1779191571420" duration="6681000" />
+      <workItem from="1779191571420" duration="10246000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -491,7 +490,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779199737586</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="fix output module_waf_detection.py&#10;&#10;skeleton module_github_check.py">
+      <option name="closed" value="true" />
+      <created>1779202799522</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1779202799522</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="start module findemail" />
     <MESSAGE value="test modul find email" />
     <MESSAGE value="ganti timeout method email find" />
     <MESSAGE value="test modul breack email check" />
@@ -535,6 +541,7 @@
     <MESSAGE value="alpha module_waf_detection.py" />
     <MESSAGE value="fix module_waf_detection.py" />
     <MESSAGE value="debug module_waf_detection.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug module_waf_detection.py" />
+    <MESSAGE value="fix output module_waf_detection.py&#10;&#10;skeleton module_github_check.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix output module_waf_detection.py&#10;&#10;skeleton module_github_check.py" />
   </component>
 </project>

@@ -27,7 +27,7 @@ except ImportError as e:
     sys.exit(1)
 
 
-def processTarget(domain, config):
+def processTarget(domain, config, github_repo=None):
 
     log.info(f"scanning {domain}")
 
@@ -109,34 +109,34 @@ def processTarget(domain, config):
     #
 
     # subdomain enumeration
-    subdomains = []
-    try:
-        module_subdomain = SubdomainEnumerationModule(domain,config)
-        subdomain_result = module_subdomain.run()
-        finalReport["results"]["Subdomain_Enumeration"] = subdomain_result
-        subdomains = subdomain_result.get("subdomains",[])
-    except Exception as e:
-        log.error(f"Modul Subdomain_Enumeration error parah : {str(e)}")
-        finalReport["results"]["Subdomain_Enumeration"] = {"error": str(e)}
+    # subdomains = []
+    # try:
+    #     module_subdomain = SubdomainEnumerationModule(domain,config)
+    #     subdomain_result = module_subdomain.run()
+    #     finalReport["results"]["Subdomain_Enumeration"] = subdomain_result
+    #     subdomains = subdomain_result.get("subdomains",[])
+    # except Exception as e:
+    #     log.error(f"Modul Subdomain_Enumeration error parah : {str(e)}")
+    #     finalReport["results"]["Subdomain_Enumeration"] = {"error": str(e)}
 
     #subdomain status check
-    subdomain_active = []
-    if subdomains:
-        try:
-            module_subdomain_status_check = SubdomainStatusCheckModule(domain,config,subdomains)
-            status_check_result = module_subdomain_status_check.run()
-            finalReport["results"]["Subdomain_Status_Check"] = status_check_result
-            if isinstance(status_check_result,dict):
-                if "method_httpx_toolkit" in status_check_result and isinstance(status_check_result["method_httpx_toolkit"],list):
-                    subdomain_active.extend(status_check_result["method_httpx_toolkit"])
-                elif "method_httprobe" in status_check_result and isinstance(status_check_result["method_httprobe"],list):
-                    subdomain_active.extend(status_check_result["method_httprobe"])
-        except Exception as e:
-            log.error(f"Modul Subdomain_Status_Check error parah : {str(e)}")
-            finalReport["results"]["Subdomain_Status_Check"] = {"error": str(e)}
-    else:
-        log.info(f"Tidak ada subdomain yang ditemukan")
-        finalReport["results"]["Subdomain_Status_Check"] = {"message":"No Subdomain Found"}
+    # subdomain_active = []
+    # if subdomains:
+    #     try:
+    #         module_subdomain_status_check = SubdomainStatusCheckModule(domain,config,subdomains)
+    #         status_check_result = module_subdomain_status_check.run()
+    #         finalReport["results"]["Subdomain_Status_Check"] = status_check_result
+    #         if isinstance(status_check_result,dict):
+    #             if "method_httpx_toolkit" in status_check_result and isinstance(status_check_result["method_httpx_toolkit"],list):
+    #                 subdomain_active.extend(status_check_result["method_httpx_toolkit"])
+    #             elif "method_httprobe" in status_check_result and isinstance(status_check_result["method_httprobe"],list):
+    #                 subdomain_active.extend(status_check_result["method_httprobe"])
+    #     except Exception as e:
+    #         log.error(f"Modul Subdomain_Status_Check error parah : {str(e)}")
+    #         finalReport["results"]["Subdomain_Status_Check"] = {"error": str(e)}
+    # else:
+    #     log.info(f"Tidak ada subdomain yang ditemukan")
+    #     finalReport["results"]["Subdomain_Status_Check"] = {"message":"No Subdomain Found"}
 
     #nmap
     # if subdomain_active:
@@ -154,28 +154,32 @@ def processTarget(domain, config):
     #
 
     # waf detection
-    if subdomain_active:
-        try:
-            log.info(f"{len(subdomain_active)} subdomain aktif diterima modul waf detection")
-            module_waf = WafDetectionModule(domain,config,subdomain_active)
-            waf_result = module_waf.run()
-            finalReport['results']['WAF'] = waf_result
-        except Exception as e:
-            log.error(f"Modul WAF error parah : {str(e)}")
-            finalReport['results']['WAF'] = {"error": str(e)}
-    else:
-        log.info(f"Tidak ada subdomain aktif yang diterima waf detection")
-        finalReport['results']['WAF'] = {"message":"No Subdomain Found to scan with WAF"}
+    # if subdomain_active:
+    #     try:
+    #         log.info(f"{len(subdomain_active)} subdomain aktif diterima modul waf detection")
+    #         module_waf = WafDetectionModule(domain,config,subdomain_active)
+    #         waf_result = module_waf.run()
+    #         finalReport['results']['WAF'] = waf_result
+    #     except Exception as e:
+    #         log.error(f"Modul WAF error parah : {str(e)}")
+    #         finalReport['results']['WAF'] = {"error": str(e)}
+    # else:
+    #     log.info(f"Tidak ada subdomain aktif yang diterima waf detection")
+    #     finalReport['results']['WAF'] = {"message":"No Subdomain Found to scan with WAF"}
 
     #github check
-    # try:
-    #     log.info(f"github check diterima")
-    #     module_github = GithubCheckModule(domain,config, github_repo)
-    #     github_result = module_github.run()
-    #     finalReport['results']['Github'] = github_result
-    # except Exception as e:
-    #     log.error(f"Modul Github Check error parah : {str(e)}")
-    #     finalReport['results']['Github'] = {"error": str(e)}
+    if github_repo:
+        try:
+            log.info(f"github check diterima")
+            module_github = GithubCheckModule(domain,config, github_repo)
+            github_result = module_github.run()
+            finalReport['results']['Github'] = github_result
+        except Exception as e:
+            log.error(f"Modul Github Check error parah : {str(e)}")
+            finalReport['results']['Github'] = {"error": str(e)}
+    else:
+        log.info(f"Tidak ada github repo yang ditemukan")
+        finalReport['results']['Github'] = {"message":"No Github Repo Found"}
 
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
@@ -191,7 +195,9 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-d","--domain", help="Target domain tunggal(contoh :bugcrowd.com)")
     group.add_argument("-l","--list", help="Daftar target domain dalam bentuk file")
-    group.add_argument("-g","--github", help="Github Repository Target")
+
+    parser.add_argument("-g","--github", help="Github Repository Target", default=None)
+
     args= parser.parse_args()
 
     config = read_config()
@@ -220,7 +226,7 @@ def main():
 
 
     for t in targets:
-        processTarget(t,config)
+        processTarget(t,config, args.github)
 
 if __name__ == "__main__":
     try:
