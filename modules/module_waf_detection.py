@@ -124,6 +124,11 @@ class WafDetectionModule:
                                 data= file.read()
                             position=0
                             while position <len(data):
+
+                                if data[position].isspace():
+                                    position+=1 #handling 1 line kosong diakhir file output tool whatwaf biar ga error posisinya
+                                    continue
+
                                 obj, index = decoder.raw_decode(data,position)
                                 position = index
                                 combined_data.append(obj)
