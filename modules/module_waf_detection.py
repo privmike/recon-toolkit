@@ -113,11 +113,19 @@ class WafDetectionModule:
             if process.returncode ==0:
                 json_output_files = [f for f in os.listdir(tmp_dir) if f.endswith('.json')] #nyari file json di dir output hopefully ga salah
                 if json_output_files:
-                    hit_files = os.path.join(tmp_dir,json_output_files[0])
-                    with open(hit_files,'r') as file:
-                        data= json.load(file)
-                        log.debug(f"Success parsing whatwaf json file output")
-                        return data
+                    combined_data = []
+                    for f in json_output_files:
+                        hit_files = os.path.join(tmp_dir,f)
+                        try:
+                            with open(hit_files,'r') as file:
+                                data= json.load(file)
+                                combined_data.append(data)
+                        except Exception as e:
+                            log.error(f"Error parsing {hit_files}: {str(e)}")
+                            return {"error":f"Error parsing {hit_files}: {str(e)}"} #ganti pakai continue kalauy mau handle partial failure dengan cara bisa lanjut ke file berikutnya dan gak berhenti di file yg gagal
+                    if not combined_data:
+                        return {"error":"failed to combine json data from whatwaf output"}
+                    return combined_data
                 else:
                     log.debug(f"whatwaf json file output is empty")
                     return {"error":"whatwaf json file output is empty"}
