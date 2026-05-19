@@ -28,6 +28,7 @@ class WafDetectionModule:
                     if not hostname.startswith(('http://','https://')):
                         hostname = f'http://{hostname}'
                     host_list.append(hostname)
+                    log.debug(f"Adding {hostname} to host list")
         if not host_list:
             return {"error":"No active Subdomain extracted from previous module to run WAF Detection"}
 
@@ -117,6 +118,7 @@ class WafDetectionModule:
                     decoder = json.JSONDecoder()
                     for f in json_output_files:
                         hit_files = os.path.join(tmp_dir,f)
+                        log.debug(f"parsing {hit_files}")
                         try:
                             if os.path.exists(hit_files) and os.path.getsize(hit_files) <=0 :
                                 continue
