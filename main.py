@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 
 from modules.module_dorking import DorkingModule
+from modules.module_github_check import GithubCheckModule
 from modules.module_nmap import NmapModule
 from modules.module_subdomain_enumeration import SubdomainEnumerationModule
 from modules.module_subdomain_status_check import SubdomainStatusCheckModule
@@ -166,6 +167,16 @@ def processTarget(domain, config):
         log.info(f"Tidak ada subdomain aktif yang diterima waf detection")
         finalReport['results']['WAF'] = {"message":"No Subdomain Found to scan with WAF"}
 
+    #github check
+    # try:
+    #     log.info(f"github check diterima")
+    #     module_github = GithubCheckModule(domain,config, github_repo)
+    #     github_result = module_github.run()
+    #     finalReport['results']['Github'] = github_result
+    # except Exception as e:
+    #     log.error(f"Modul Github Check error parah : {str(e)}")
+    #     finalReport['results']['Github'] = {"error": str(e)}
+
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
     if savedPath:
@@ -180,7 +191,7 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("-d","--domain", help="Target domain tunggal(contoh :bugcrowd.com)")
     group.add_argument("-l","--list", help="Daftar target domain dalam bentuk file")
-
+    group.add_argument("-g","--github", help="Github Repository Target")
     args= parser.parse_args()
 
     config = read_config()
@@ -206,6 +217,7 @@ def main():
         sys.exit(1)
 
     log.info(f"total target : {len(targets)}")
+
 
     for t in targets:
         processTarget(t,config)

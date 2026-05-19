@@ -107,6 +107,23 @@ class WafDetectionModule:
         tmp_dir = ''
 
         try:
+
+            try:
+                whatwaf_global_cache = os.path.expanduser('~/.whatwaf/json_output')
+                if os.path.exists(whatwaf_global_cache):
+                    for filename in os.listdir(whatwaf_global_cache):
+                        filepath = os.path.join(whatwaf_global_cache, filename)
+                        try:
+                            if os.path.isfile(filepath) or os.path.islink(filepath):
+                                os.unlink(filepath)
+                            elif os.path.isdir(filepath):
+                                shutil.rmtree(filepath)
+                        except Exception as e:
+                            log.error(f"Failed to delete file {filepath}: {str(e)}")
+            except Exception as e:
+                log.error(f"Error deleting whatwaf global cache: {str(e)}")
+                return {"error":f"Error deleting whatwaf global cache: {str(e)}"}
+
             tmp_dir = tempfile.mkdtemp()
 
             cmd = ['whatwaf','-F','-J','--ra', '-t','5','--skip','-l',tmp_input_file,'-o',tmp_dir,'--force-file']
