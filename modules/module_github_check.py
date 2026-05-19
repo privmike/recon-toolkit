@@ -45,7 +45,7 @@ class GithubCheckModule:
     def methid_trufflehog(self):
         log.debug(f"Running Module Github Check dengan method trufflehog")
 
-        cmd = ['trufflehog', 'github','--result=verified','repo',self.github_repo,'-j','--no-color']
+        cmd = ['trufflehog', 'github','--result=verified','--repo',self.github_repo,'-j','--no-color']
 
         try:
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
