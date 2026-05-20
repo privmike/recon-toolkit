@@ -77,6 +77,9 @@ class GithubCheckModule:
                     log.debug(f"Trufflehog finding is Empty")
                     return {'message': 'No exposed secret found'}
                 return findings
+            else:
+                log.error(f"Error running trufflehog: {process.stderr}")
+                return {"error":f"Error running trufflehog: {process.stderr}"}
         except subprocess.TimeoutExpired:
             log.error(f"Trufflehog Timeout")
             return {"error":"Trufflehog Timeout"}
@@ -115,7 +118,7 @@ class GithubCheckModule:
             try:
                 log.debug(f"running gitleaks")
                 gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=6000)
-                if gitleaks_process.returncode  not in [0,1]: #1 berati ketemu , 0 berati tidak ada
+                if gitleaks_process.returncode in [0,1]: #1 berati ketemu , 0 berati tidak ada
                     if not os.path.exists(temp_gitleaks_output_file_path) or os.path.getsize(temp_gitleaks_output_file_path) <=0:
                         log.debug(f"gitleaks output is Empty")
                         return {'message': 'gitleaks output is Empty'}
@@ -127,7 +130,9 @@ class GithubCheckModule:
                         log.debug(f"gitleaks finding is Empty")
                         return {'message': 'No exposed secret found'}
                     return findings
-
+                else:
+                    log.error(f"Error running gitleaks: {gitleaks_process.stderr}")
+                    return {"error":f"Error running gitleaks: {gitleaks_process.stderr}"}
             except subprocess.TimeoutExpired:
                 log.error(f"Gitleaks Timeout")
                 return {"error":"Gitleaks Timeout"}
