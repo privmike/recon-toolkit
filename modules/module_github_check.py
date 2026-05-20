@@ -57,7 +57,7 @@ class GithubCheckModule:
 
                 if not raw_output:
                     log.debug(f"Trufflehog output is Empty")
-                    return []
+                    return {'message': 'trufferhog output is Empty'}
 
                 lines = raw_output.splitlines()
 
@@ -73,6 +73,9 @@ class GithubCheckModule:
                         log.debug(f"failed to parse json output from trufflehog")
                         return {"error":"failed to parse json output from trufflehog"}
                 log.debug(f"Trufflehog output: {len(findings)} findings")
+                if not findings:
+                    log.debug(f"Trufflehog finding is Empty")
+                    return {'message': 'No exposed secret found'}
                 return findings
         except subprocess.TimeoutExpired:
             log.error(f"Trufflehog Timeout")
@@ -115,13 +118,16 @@ class GithubCheckModule:
                 if gitleaks_process.returncode  not in [0,1]: #1 berati ketemu , 0 berati tidak ada
                     if not os.path.exists(temp_gitleaks_output_file_path) or os.path.getsize(temp_gitleaks_output_file_path) <=0:
                         log.debug(f"gitleaks output is Empty")
-                        return []
+                        return {'message': 'gitleaks output is Empty'}
                     with open(temp_gitleaks_output_file_path, 'r') as file:
                         findings = json.load(file)
                     log.debug(f"gitleaks output: {len(findings)} findings")
+
+                    if not findings:
+                        log.debug(f"gitleaks finding is Empty")
+                        return {'message': 'No exposed secret found'}
                     return findings
-                else:
-                    log.debug(f"gitleaks output: {gitleaks_process.stderr}, {gitleaks_process.returncode}")
+
             except subprocess.TimeoutExpired:
                 log.error(f"Gitleaks Timeout")
                 return {"error":"Gitleaks Timeout"}
