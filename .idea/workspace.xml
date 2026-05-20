@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="alpha module_github_check.py method trufflehog" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix bug module_github_check.py method trufflehog">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_github_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_github_check.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="26" />
+    <option name="cachedIndexableFilesCount" value="27" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -108,23 +111,8 @@
       <workItem from="1778929871566" duration="10525000" />
       <workItem from="1779012233720" duration="14253000" />
       <workItem from="1779067181062" duration="29996000" />
-      <workItem from="1779191571420" duration="10546000" />
-    </task>
-    <task id="LOCAL-00001" summary="initial commit">
-      <option name="closed" value="true" />
-      <created>1771381365245</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1771381365245</updated>
-    </task>
-    <task id="LOCAL-00002" summary="initial setup">
-      <option name="closed" value="true" />
-      <created>1771403492835</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1771403492835</updated>
+      <workItem from="1779191571420" duration="11178000" />
+      <workItem from="1779241404412" duration="5544000" />
     </task>
     <task id="LOCAL-00003" summary="main">
       <option name="closed" value="true" />
@@ -502,7 +490,23 @@
       <option name="project" value="LOCAL" />
       <updated>1779207770136</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="fix bug module_github_check.py method trufflehog">
+      <option name="closed" value="true" />
+      <created>1779207959335</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1779207959335</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fix bug module_github_check.py method trufflehog">
+      <option name="closed" value="true" />
+      <created>1779208120738</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1779208120738</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="ganti timeout method email find" />
     <MESSAGE value="test modul breack email check" />
     <MESSAGE value="fix modul email breach dan find email" />
     <MESSAGE value="fix main.py entry breach check module" />
@@ -546,6 +549,7 @@
     <MESSAGE value="debug module_waf_detection.py" />
     <MESSAGE value="fix output module_waf_detection.py&#10;&#10;skeleton module_github_check.py" />
     <MESSAGE value="alpha module_github_check.py method trufflehog" />
-    <option name="LAST_COMMIT_MESSAGE" value="alpha module_github_check.py method trufflehog" />
+    <MESSAGE value="fix bug module_github_check.py method trufflehog" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug module_github_check.py method trufflehog" />
   </component>
 </project>

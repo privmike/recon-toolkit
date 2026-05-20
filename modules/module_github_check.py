@@ -1,6 +1,8 @@
 import json
+import os.path
 import subprocess
-from typing import Text
+import tempfile
+
 
 from utils.logger import log
 
@@ -22,8 +24,8 @@ class GithubCheckModule:
             return {"error":"Input github repo cannot be empty"}
 
         method = [
-            ("method_trufflehog",self.methid_trufflehog),
-            ("method_gitleaks",self.method_gitleaks)
+            ("trufflehog",self.methid_trufflehog),
+            ("gitleaks",self.method_gitleaks)
         ]
 
         for tool,func in method:
@@ -35,8 +37,8 @@ class GithubCheckModule:
                     return results
 
         if not results:
-            log.debug(f"No Github Check Found")
-            return {"message":"No Github Check Found"}
+            log.debug(f"No exposed secret found")
+            return {"message":"No exposed secret found"}
 
 
         return results
@@ -82,5 +84,56 @@ class GithubCheckModule:
 
     def method_gitleaks(self):
         log.debug(f"Running Module Github Check dengan method gitleaks")
+
+        with tempfile.TemporaryDirectory() as temp_repo_dir:
+            github_clone_cmd = ['git','clone', self.github_repo, temp_repo_dir]
+
+            try:
+                log.debug(f"running git clone")
+                gitclone_process = subprocess.run(github_clone_cmd, capture_output=True, text=True, timeout=600)
+                if gitclone_process.returncode != 0:
+                    log.error(f"Error cloning github repository stderr: {gitclone_process.stderr}")
+                    return {"error":f"Error cloning github repository: {gitclone_process.stderr}"}
+            except subprocess.TimeoutExpired:
+                log.error(f"Github Clone Timeout")
+                return {"error":"Github Clone Timeout"}
+            except Exception as e:
+                log.error(f"Error cloning github repository: {str(e)}")
+                return {"error":f"Error cloning github repository: {str(e)}"}
+
+            temp_gitleaks_output_file = tempfile.NamedTemporaryFile(suffix='.json', delete=False)
+
+            temp_gitleaks_output_file_path = temp_gitleaks_output_file.name #ngambil asbsoute path dari file tmp
+
+            temp_gitleaks_output_file.close()
+
+            gitleaks_cmd = ['gitleaks','dir',temp_repo_dir, '--report-path', temp_gitleaks_output_file_path,'--report-format','json']
+
+            try:
+                log.debug(f"running gitleaks")
+                gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=6000)
+                if gitleaks_process.returncode == 0:
+                    if not os.path.exists(temp_gitleaks_output_file_path) or os.path.getsize(temp_gitleaks_output_file_path) <=0:
+                        log.debug(f"gitleaks output is Empty")
+                        return []
+                    with open(temp_gitleaks_output_file_path, 'r') as file:
+                        findings = json.load(file)
+
+                    return findings
+
+            except subprocess.TimeoutExpired:
+                log.error(f"Gitleaks Timeout")
+                return {"error":"Gitleaks Timeout"}
+            except json.JSONDecodeError:
+                log.error(f"failed to parse json output from gitleaks")
+                return {"error":"failed to parse json output from gitleaks"}
+            except Exception as e:
+                log.error(f"Error running gitleaks: {str(e)}")
+                return {"error":f"Error running gitleaks: {str(e)}"}
+            finally:
+                if os.path.exists(temp_gitleaks_output_file_path):
+                    os.remove(temp_gitleaks_output_file_path)
+
+
 
 
