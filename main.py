@@ -12,7 +12,7 @@ from modules.module_subdomain_status_check import SubdomainStatusCheckModule
 from modules.module_waf_detection import WafDetectionModule
 from utils.helpers import create_output_dir, read_config, save_json_report
 from utils.logger import log
-
+from utils.json_to_html import generate_html_final_report
 
 
 try:
@@ -184,9 +184,16 @@ def processTarget(domain, config, github_repo=None):
     finalReport["finish_time"] = str(datetime.now())
     savedPath = save_json_report(finalReport,outputDir)
     if savedPath:
-        log.info(f"laporan berhasil dibuat : {savedPath}")
+        log.info(f"laporan JSON berhasil dibuat : {savedPath}")
+        try:
+            html_path = savedPath.replace('.json','.html')
+            generate_html_final_report(savedPath,html_path)
+            log.info(f"HTML report successfully : {html_path}")
+        except Exception as e:
+            log.error(f"Error generating HTML report : {str(e)}")
 
     log.info(f"scan selesai")
+
 
 def main():
 
