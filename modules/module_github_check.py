@@ -118,7 +118,7 @@ class GithubCheckModule:
                         return []
                     with open(temp_gitleaks_output_file_path, 'r') as file:
                         findings = json.load(file)
-
+                    log.debug(f"gitleaks output: {len(findings)} findings")
                     return findings
 
             except subprocess.TimeoutExpired:
