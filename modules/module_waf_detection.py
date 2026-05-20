@@ -157,6 +157,7 @@ class WafDetectionModule:
                             return {"error":f"Error parsing {hit_files}: {str(e)}"} #ganti pakai continue kalauy mau handle partial failure dengan cara bisa lanjut ke file berikutnya dan gak berhenti di file yg gagal
                     if not combined_data:
                         return {"error":"failed to combine json data from whatwaf output"}
+                    log.debug(f"found {len(combined_data)} json file output from whatwaf")
                     return combined_data
                 else:
                     log.debug(f"whatwaf json file output is empty")
