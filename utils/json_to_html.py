@@ -65,6 +65,7 @@ def generate_html_final_report(json_file, html_output_path):
 
     target = report_data.get('target','unknown target domain')
     start_time = report_data.get('start_time','unknown start time')
+    end_time = report_data.get('finish_time','unknown finish time')
     results = report_data.get('results',{})
 
     #sampekno iki html e inget mari
@@ -87,6 +88,7 @@ def generate_html_final_report(json_file, html_output_path):
             <div class="mt-2 text-slate-300 flex flex-col md:flex-row md:gap-6 text-sm font-mono">
                 <p>Target: <span class="font-semibold text-white">{target}</span></p>
                 <p>Start Time: <span class="font-semibold text-white">{start_time}</span></p>
+                <p>End Time: <span class="font-semibold text-white">{end_time}</span></p>
             </div>
         </div>
         

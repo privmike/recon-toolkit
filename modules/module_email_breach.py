@@ -49,6 +49,7 @@ class EmailBreachModule:
                     breach = data.get('breaches', [])
                     if breach:
                         result[email] = breach
+                    time.sleep(2)
                 elif responses.status_code == 404:
                     None
                 else:

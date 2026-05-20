@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="increase xnldorker timeout">
-      <change afterPath="$PROJECT_DIR$/utils/json_to_html.py" afterDir="false" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="alpha html reporting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_email_breach.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_email_breach.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,15 +112,7 @@
       <workItem from="1779012233720" duration="14253000" />
       <workItem from="1779067181062" duration="29996000" />
       <workItem from="1779191571420" duration="11178000" />
-      <workItem from="1779241404412" duration="21329000" />
-    </task>
-    <task id="LOCAL-00012" summary="start module findemail">
-      <option name="closed" value="true" />
-      <created>1772633646002</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1772633646002</updated>
+      <workItem from="1779241404412" duration="22931000" />
     </task>
     <task id="LOCAL-00013" summary="test modul find email">
       <option name="closed" value="true" />
@@ -507,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779262683378</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="alpha html reporting">
+      <option name="closed" value="true" />
+      <created>1779287074586</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1779287074586</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="revisi minor module_find_email.py , add module_dorking.py" />
     <MESSAGE value="method call missing fix module_dorking.py" />
     <MESSAGE value="final report line missing fix for module_dorking.py" />
     <MESSAGE value="fix error module_email_breach.py,dan module_ip.py" />
@@ -551,6 +549,7 @@
     <MESSAGE value="fix module_github_check.py" />
     <MESSAGE value="main.py fully restored (uncommented), all module active" />
     <MESSAGE value="increase xnldorker timeout" />
-    <option name="LAST_COMMIT_MESSAGE" value="increase xnldorker timeout" />
+    <MESSAGE value="alpha html reporting" />
+    <option name="LAST_COMMIT_MESSAGE" value="alpha html reporting" />
   </component>
 </project>
