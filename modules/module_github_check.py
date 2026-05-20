@@ -120,7 +120,8 @@ class GithubCheckModule:
                         findings = json.load(file)
                     log.debug(f"gitleaks output: {len(findings)} findings")
                     return findings
-
+                else:
+                    log.debug(f"gitleaks output: {gitleaks_process.stderr}, {gitleaks_process.returncode}")
             except subprocess.TimeoutExpired:
                 log.error(f"Gitleaks Timeout")
                 return {"error":"Gitleaks Timeout"}
