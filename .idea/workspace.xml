@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="fix module_github_check.py" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main.py fully restored (uncommented), all module active">
+      <change beforePath="$PROJECT_DIR$/modules/module_dorking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,15 +111,7 @@
       <workItem from="1779012233720" duration="14253000" />
       <workItem from="1779067181062" duration="29996000" />
       <workItem from="1779191571420" duration="11178000" />
-      <workItem from="1779241404412" duration="7908000" />
-    </task>
-    <task id="LOCAL-00010" summary="modul ip selsasi blm test">
-      <option name="closed" value="true" />
-      <created>1772630530069</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1772630530069</updated>
+      <workItem from="1779241404412" duration="8744000" />
     </task>
     <task id="LOCAL-00011" summary="report buat modul ip kelupaan">
       <option name="closed" value="true" />
@@ -503,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779258187891</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="main.py fully restored (uncommented), all module active">
+      <option name="closed" value="true" />
+      <created>1779258556659</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1779258556659</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -522,7 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="fix main.py entry breach check module" />
     <MESSAGE value="fix null return module_email_breach.py, minor logging revision on module_find_email.py" />
     <MESSAGE value="revisi minor module_find_email.py , add module_dorking.py" />
     <MESSAGE value="method call missing fix module_dorking.py" />
@@ -547,6 +548,7 @@
     <MESSAGE value="fix bug module_github_check.py method trufflehog" />
     <MESSAGE value="alpha module_github_check.py" />
     <MESSAGE value="fix module_github_check.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix module_github_check.py" />
+    <MESSAGE value="main.py fully restored (uncommented), all module active" />
+    <option name="LAST_COMMIT_MESSAGE" value="main.py fully restored (uncommented), all module active" />
   </component>
 </project>

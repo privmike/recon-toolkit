@@ -59,7 +59,7 @@ class DorkingModule:
             tmpFile = f"tmp_xnldorker_{category}.txt"
             cmd = ["xnldorker" , "-i",queryString, "-es","google,yandex","-o",tmpFile ,"-ow"]
             try:
-                process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+                process = subprocess.run(cmd, capture_output=True, text=True, timeout=6000)
                 if process.returncode != 0:
                     log.error(f"Error running xnldorker: {process.stderr}")
                     return { "error":f"Error running xnldorker: {process.stderr}"}
