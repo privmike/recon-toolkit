@@ -112,7 +112,7 @@ class GithubCheckModule:
             try:
                 log.debug(f"running gitleaks")
                 gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=6000)
-                if gitleaks_process.returncode == 0:
+                if gitleaks_process.returncode  not in [0,1]: #1 berati ketemu , 0 berati tidak ada
                     if not os.path.exists(temp_gitleaks_output_file_path) or os.path.getsize(temp_gitleaks_output_file_path) <=0:
                         log.debug(f"gitleaks output is Empty")
                         return []
