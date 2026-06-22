@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="minor revision json_to_html.py and introducing delay for rate limiting on xposedornot API">
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dorks_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dorks_list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_find_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_find_email.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_whois.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_whois.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/command_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/command_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/logger.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,15 +125,7 @@
       <workItem from="1780019679441" duration="6573000" />
       <workItem from="1780637927455" duration="608000" />
       <workItem from="1781499823871" duration="7590000" />
-      <workItem from="1782127912483" duration="2548000" />
-    </task>
-    <task id="LOCAL-00014" summary="test modul find email">
-      <option name="closed" value="true" />
-      <created>1777539659198</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1777539659198</updated>
+      <workItem from="1782127912483" duration="3161000" />
     </task>
     <task id="LOCAL-00015" summary="test modul find email">
       <option name="closed" value="true" />
@@ -524,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779291050591</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="main">
+      <option name="closed" value="true" />
+      <created>1782130773687</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1782130773688</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="final report line missing fix for module_dorking.py" />
     <MESSAGE value="fix error module_email_breach.py,dan module_ip.py" />
     <MESSAGE value="fix error module_dorking.py" />
     <MESSAGE value="return fix" />
@@ -568,6 +562,7 @@
     <MESSAGE value="increase xnldorker timeout" />
     <MESSAGE value="alpha html reporting" />
     <MESSAGE value="minor revision json_to_html.py and introducing delay for rate limiting on xposedornot API" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor revision json_to_html.py and introducing delay for rate limiting on xposedornot API" />
+    <MESSAGE value="main" />
+    <option name="LAST_COMMIT_MESSAGE" value="main" />
   </component>
 </project>

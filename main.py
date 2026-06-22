@@ -224,7 +224,7 @@ def main():
         domain = args.domain.strip()
         repogithub = args.github.strip() if args.github else None
         if domain:
-            targets.append(domain,repogithub)
+            targets.append((domain,repogithub))
 
     elif args.list:
         if os.path.exists(args.list):
@@ -237,9 +237,9 @@ def main():
                         part = line.split(',')
                         domain = part[0].strip()
                         repogithub = part[1].strip()
-                        targets.append(domain,repogithub)
+                        targets.append((domain,repogithub))
                     else: #isine cuman domain tok line e
-                        targets.append(line,None)
+                        targets.append((line,None))
 
         else:
             log.critical(f"File list domain tidak ditemukan : {args.list}")
