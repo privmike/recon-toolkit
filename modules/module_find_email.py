@@ -21,10 +21,10 @@ class FindEmailModule:
 
         result = {}
         for tool,func in method:
-            checkTool = "theHarvester" if "theharvester" in tool.lower() else "emailharvester"
-            if not shutil.which(checkTool) and not shutil.which(tool.lower()):
-                log.warning(f"Tool {tool} Not Found.")
-                continue
+            # checkTool = "theHarvester" if "theharvester" in tool.lower() else "emailharvester"
+            # if not shutil.which(checkTool) and not shutil.which(tool.lower()):
+            #     log.warning(f"Tool {tool} Not Found.")
+            #     continue
 
             log.info(f"Running tool {tool}")
             data = func()

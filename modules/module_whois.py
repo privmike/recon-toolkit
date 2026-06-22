@@ -34,7 +34,7 @@ class WhoisModule:
         try:
             whoisData = whois.whois(self.domain)
             if whoisData:
-                return json.loads(json.dumps(whoisData, default=str)) #fix error datetime bkn string
+                return json.loads(json.dumps(whoisData, default=str)) #fix error datetime bkn string #output as dict
         except Exception as e:
             log.debug(f"python-library gagal : {str(e)}")
         return None
@@ -47,7 +47,7 @@ class WhoisModule:
             return None
         try:
             headers = {"apikey": apiKey}
-            url = f"https://api.apilayer.com/whois/query?domain={self.domain}"
+            url = f"https://api.apilayer.com/whois/query?domain={self.domain}" #return format dict/jsson
             response = requests.get(url,headers=headers, timeout=10)
 
             if response.status_code ==200:

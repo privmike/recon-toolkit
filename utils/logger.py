@@ -29,7 +29,7 @@ def setup_logger(name="ReconToolkit"):
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(file_format)
 
-    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler = logging.StreamHandler(sys.stdout) #stream handler untuk menandakan output ke terminal
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(console_format)
 
