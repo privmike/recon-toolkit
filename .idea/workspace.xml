@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -125,15 +124,7 @@
       <workItem from="1780019679441" duration="6573000" />
       <workItem from="1780637927455" duration="608000" />
       <workItem from="1781499823871" duration="7590000" />
-      <workItem from="1782127912483" duration="3161000" />
-    </task>
-    <task id="LOCAL-00015" summary="test modul find email">
-      <option name="closed" value="true" />
-      <created>1777539688586</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1777539688586</updated>
+      <workItem from="1782127912483" duration="3791000" />
     </task>
     <task id="LOCAL-00016" summary="ganti timeout method email find">
       <option name="closed" value="true" />
@@ -519,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782130773688</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="main">
+      <option name="closed" value="true" />
+      <created>1782131132206</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1782131132206</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
