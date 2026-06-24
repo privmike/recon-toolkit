@@ -108,33 +108,33 @@ class WafDetectionModule:
 
         try:
 
-            whatwaf_global_cache = os.path.expanduser('~/.whatwaf/json_output')
-            try: #bersihkan cache hasil scan lama tool ini
-                if os.path.exists(whatwaf_global_cache):
-                    for filename in os.listdir(whatwaf_global_cache):
-                        filepath = os.path.join(whatwaf_global_cache, filename)
-                        try:
-                            if os.path.isfile(filepath) or os.path.islink(filepath):
-                                os.unlink(filepath)
-                            elif os.path.isdir(filepath):
-                                shutil.rmtree(filepath)
-                        except Exception as e:
-                            log.error(f"Failed to delete file {filepath}: {str(e)}")
-            except Exception as e:
-                log.error(f"Error deleting whatwaf global cache: {str(e)}")
-                return {"error":f"Error deleting whatwaf global cache: {str(e)}"}
+            # try: #bersihkan cache hasil scan lama tool ini
+            #     whatwaf_global_cache = os.path.expanduser('~/.whatwaf/json_output')
+            #     if os.path.exists(whatwaf_global_cache):
+            #         for filename in os.listdir(whatwaf_global_cache):
+            #             filepath = os.path.join(whatwaf_global_cache, filename)
+            #             try:
+            #                 if os.path.isfile(filepath) or os.path.islink(filepath):
+            #                     os.unlink(filepath)
+            #                 elif os.path.isdir(filepath):
+            #                     shutil.rmtree(filepath)
+            #             except Exception as e:
+            #                 log.error(f"Failed to delete file {filepath}: {str(e)}")
+            # except Exception as e:
+            #     log.error(f"Error deleting whatwaf global cache: {str(e)}")
+            #     return {"error":f"Error deleting whatwaf global cache: {str(e)}"}
 
             tmp_dir = tempfile.mkdtemp()
 
             cmd = ['whatwaf','-F','-J','--ra', '-t','5','--skip','-l',tmp_input_file,'-o',tmp_dir,'--force-file']
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
             if process.returncode ==0:
-                json_output_files = [f for f in os.listdir(whatwaf_global_cache) if f.endswith('.json')] #nyari file json di dir output hopefully ga salah
+                json_output_files = [f for f in os.listdir(tmp_dir) if f.endswith('.json')] #nyari file json di dir output hopefully ga salah
                 if json_output_files:
                     combined_data = []
                     decoder = json.JSONDecoder()
                     for f in json_output_files:
-                        hit_files = os.path.join(whatwaf_global_cache,f)
+                        hit_files = os.path.join(tmp_dir,f)
                         log.debug(f"parsing {hit_files}")
                         try:
                             if os.path.exists(hit_files) and os.path.getsize(hit_files) <=0 :
@@ -171,9 +171,9 @@ class WafDetectionModule:
         except Exception as e:
             log.error(f"Error running whatwaf: {str(e)}")
             return {"error":f"whatwaf error {str(e)}"}
-        finally:
-            if tmp_dir and os.path.exists(tmp_dir):
-                shutil.rmtree(tmp_dir)
+        # finally:
+        #     if tmp_dir and os.path.exists(tmp_dir):
+        #         shutil.rmtree(tmp_dir)
 
 
 
