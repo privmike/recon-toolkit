@@ -26,12 +26,13 @@ class SubdomainEnumerationModule:
             if isError:
                 log.error(f"Error running {tool}: {data.get('error')}")
                 error_msg[tool] = data.get('error')
-            elif data:
-                all_subdomains.update(data)
-                tool_counter += 1
-                log.info(f"Found {len(data)} subdomains using {tool}")
             else:
-                log.error(f"No subdomains found using {tool}")
+                tool_counter += 1
+                if data:
+                    all_subdomains.update(data)
+                    log.info(f"Found {len(data)} subdomains using {tool}")
+                else:
+                    log.info(f"No subdomains found using {tool}")
         if not all_subdomains:
             if tool_counter > 0:
                 return {"message":f"No subdomains found by {tool_counter} method"}
