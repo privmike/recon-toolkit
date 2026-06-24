@@ -56,9 +56,9 @@ class SubdomainEnumerationModule:
         cmd_enum = ["amass", "enum","-active","-d",self.domain,"--nocolor","-timeout","10","-brute"]
         cmd_sub = ["amass","subs","-names","-d",self.domain,"-nocolor"]
         try:
-            process = subprocess.run(cmd_enum, capture_output=True, text=True, timeout=600)
+            process = subprocess.run(cmd_enum, capture_output=True, text=True, timeout=1200)
             if process.returncode == 0:
-                process_sub = subprocess.run(cmd_sub, capture_output=True, text=True, timeout=10)
+                process_sub = subprocess.run(cmd_sub, capture_output=True, text=True, timeout=60)
                 if process_sub.returncode == 0:
                     for line in process_sub.stdout.splitlines():
                         clear_text = line.strip()
