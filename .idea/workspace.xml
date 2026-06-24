@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="msg">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/module_subdomain_enumeration.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_subdomain_enumeration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,15 +126,7 @@
       <workItem from="1781499823871" duration="7590000" />
       <workItem from="1782127912483" duration="7751000" />
       <workItem from="1782215569799" duration="8469000" />
-      <workItem from="1782269098505" duration="4330000" />
-    </task>
-    <task id="LOCAL-00018" summary="fix modul email breach dan find email">
-      <option name="closed" value="true" />
-      <created>1777546017587</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1777546017587</updated>
+      <workItem from="1782269098505" duration="4627000" />
     </task>
     <task id="LOCAL-00019" summary="fix main.py entry breach check module">
       <option name="closed" value="true" />
@@ -522,7 +512,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782269142011</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="test">
+      <option name="closed" value="true" />
+      <created>1782275474291</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1782275474291</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +539,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <MESSAGE value="fix error module_dorking.py" />
     <MESSAGE value="return fix" />
     <MESSAGE value="extensive fix and mod to module dorking, email breach, email finding" />
     <MESSAGE value="dorks" />
@@ -566,6 +563,7 @@
     <MESSAGE value="minor revision json_to_html.py and introducing delay for rate limiting on xposedornot API" />
     <MESSAGE value="main" />
     <MESSAGE value="msg" />
-    <option name="LAST_COMMIT_MESSAGE" value="msg" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>
