@@ -91,7 +91,7 @@ class GithubCheckModule:
     def method_gitleaks(self):
         log.debug(f"Running Module Github Check dengan method gitleaks")
 
-        with tempfile.TemporaryDirectory() as temp_repo_dir:
+        with tempfile.TemporaryDirectory() as temp_repo_dir: #sama dengan mkdtemp tp ini lebih enak gausah manual delete tmp dirnya
             github_clone_cmd = ['git','clone', self.github_repo, temp_repo_dir]
 
             try:
@@ -117,7 +117,7 @@ class GithubCheckModule:
 
             try:
                 log.debug(f"running gitleaks")
-                gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=6000)
+                gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=600)
                 if gitleaks_process.returncode in [0,1]: #1 berati ketemu , 0 berati tidak ada
                     if not os.path.exists(temp_gitleaks_output_file_path) or os.path.getsize(temp_gitleaks_output_file_path) <=0:
                         log.debug(f"gitleaks output is Empty")

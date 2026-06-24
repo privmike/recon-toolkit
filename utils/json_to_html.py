@@ -22,7 +22,7 @@ def parse_data(data):
         if not data:
             return "<span class='text-gray-500'>Empty</span>"
 
-
+        #ini buat dict yg didalam list (nmap, waf) sehingga nanti didisplay sebagai table horizontal
         if all(isinstance(item, dict) for item in data): #cek apakah semua entry di dalam var data itu sebuah dictionary
             headers = []
             #ngambil keys dari tial dictioanry entry yang ada di list
@@ -45,7 +45,7 @@ def parse_data(data):
                 html += '</tr>\n'
             html += '</tbody>\n</table></div>\n'
             return html
-        else:
+        else: #jika bukan dict jadi dibuat bullet point serperti subdomain enum
             html = '<ul class="list-disc list-inside text-sm text-gray-800 space-y-1">\n'
             for item in data:
                 html += f'<li>{parse_data(item)}</li>\n'
@@ -117,7 +117,7 @@ def generate_html_final_report(json_file, html_output_path):
                         {parse_data(tool_data)}
                     </div>
                     """
-            else:
+            else:#klu hasile modul e langsung info
                 html_content += parse_data(module_data)
 
             html_content += """

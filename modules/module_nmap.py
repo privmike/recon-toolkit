@@ -152,7 +152,7 @@ class NmapModule:
                             product = service.get('product','Product Unknown')
                             version = service.get('version','Version Unknown')
                             extrainfo = service.get('extrainfo','Extrainfo Unknown')
-                            full_version = f"{product} {version} {extrainfo}".strip()
+                            full_version = f"{product}, {version}, {extrainfo}".strip()
                             if full_version:
                                 port_data['version'] = full_version
 

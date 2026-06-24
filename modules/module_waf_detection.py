@@ -171,9 +171,9 @@ class WafDetectionModule:
         except Exception as e:
             log.error(f"Error running whatwaf: {str(e)}")
             return {"error":f"whatwaf error {str(e)}"}
-        # finally:
-        #     if tmp_dir and os.path.exists(tmp_dir):
-        #         shutil.rmtree(tmp_dir)
+        finally:
+            if tmp_dir and os.path.exists(tmp_dir):
+                shutil.rmtree(tmp_dir)
 
 
 

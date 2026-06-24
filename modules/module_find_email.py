@@ -49,7 +49,7 @@ class FindEmailModule:
 
     def method_theharvester(self):
         try:
-            cmd = ["theHarvester", "-d", self.domain, "-b", "all"]
+            cmd = ["theHarvester", "-d", self.domain, "-b", "all"] #-b itu sorces
 
             process = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
 
