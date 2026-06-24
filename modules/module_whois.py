@@ -23,7 +23,8 @@ class WhoisModule:
             data = func() #func() adalah function objct, jadi artie itu panggil fungsi yg ada di var func trs jalankan dan simpan hasile di variable data
             if data:
                 results[tool] = data
-                if self.mode == "default":
+                isError = isinstance(data, dict) and "error" in data
+                if self.mode == "default" and not isError:
                     return results
 
         if not results:
@@ -35,16 +36,17 @@ class WhoisModule:
             whoisData = whois.whois(self.domain)
             if whoisData:
                 return json.loads(json.dumps(whoisData, default=str)) #fix error datetime bkn string #output as dict
+            return {"error":f"whois error"}
         except Exception as e:
             log.debug(f"python-library gagal : {str(e)}")
-        return None
+            return {"error":f"whois error {str(e)}"}
 
     def method_WHOIS_API(self):
 
         apiKey = self.config.get('api_keys',{}).get('apilayer_whois')
         if not apiKey:
             log.debug(f"api key whois tidak ditemukan")
-            return None
+            return {"error":f"WHOIS API key not found"}
         try:
             headers = {"apikey": apiKey}
             url = f"https://api.apilayer.com/whois/query?domain={self.domain}" #return format dict/jsson
@@ -54,8 +56,9 @@ class WhoisModule:
                 return response.json()
             else:
                 log.debug(f"API whois error {response.status_code}  - {response.text}")
+                return {"error":f"API WHOIS error {response.status_code}"}
 
         except Exception as e:
             log.debug(f"API WHOIS error : {str(e)}")
-        return  None
+            return {"error":f"API WHOIS error {str(e)}"}
 

@@ -65,7 +65,7 @@ class DorkingModule:
                     return { "error":f"Error running xnldorker: {process.stderr}"}
                 if os.path.exists(tmpFile):
                     with open(tmpFile, 'r') as file:
-                        lines = [line.strip() for line in file.readlines() if line.strip()]
+                        lines = [line.strip() for line in file.readlines() if line.strip()] #cek untuk setiap line , if line.strip artinya cek apabile baris itu masih ada setelah dibersihkan, klo iya maka line.strip() ditambahkan ke list
                         if lines:
                             result[category] = lines
 

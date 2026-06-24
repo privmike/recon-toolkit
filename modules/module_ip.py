@@ -23,7 +23,8 @@ class IPModule:
             data = func()
             if data:
                 results[tool] = data
-                if self.mode =="default":
+                isError = isinstance(data, dict) and "error" in data
+                if self.mode =="default" and not isError:
                     return results
 
         if not results:
@@ -39,12 +40,14 @@ class IPModule:
                 data = response.json()
                 if data.get("status") == "success":
                     return data
+                else:
+                    return None
             else:
                 log.debug(f"error di modul ip, metode ipapi, ada masalah dengan request: {response.status_code}  - {response.text}")
-            return None
+            return {"error":f"ip_api error {response.status_code}"}
         except Exception as e :
             log.debug(f"error di modul ip , metode ip-api: {str(e)}")
-            return None
+            return {"error":f"ip_api error {str(e)}"}
 
     def method_freeipapi(self):
         log.info(f"Running freeipapi")
@@ -53,7 +56,7 @@ class IPModule:
                 ip = socket.gethostbyname(self.domain)
             except Exception as e:
                 log.debug(f"error di modul ip, metode backup bagian resolver hostname to ip : {str(e)}")
-                return None
+                return {"error":f"socket failed to get ip {str(e)}"}
             url = f"https://free.freeipapi.com/api/json/{ip}"
             response = requests.get(url, timeout=self.timeout)
 
@@ -62,7 +65,7 @@ class IPModule:
                 return data
             else:
                 log.debug(f"error di modul ip, metode backup, ada masalah dengan request : {response.status_code}  - {response.text}")
-            return None
+            return {"error":f"freeipapi error {response.status_code}"}
         except Exception as e :
             log.debug(f"error di modul ip, metode backup {str(e)}")
-            return None
+            return {"error":f"freeipapi error {str(e)}"}

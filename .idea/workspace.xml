@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="main">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_dns.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dns.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_dorking.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_dorking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_ip.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_ip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/module_whois.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_whois.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,15 +128,8 @@
       <workItem from="1780019679441" duration="6573000" />
       <workItem from="1780637927455" duration="608000" />
       <workItem from="1781499823871" duration="7590000" />
-      <workItem from="1782127912483" duration="3791000" />
-    </task>
-    <task id="LOCAL-00016" summary="ganti timeout method email find">
-      <option name="closed" value="true" />
-      <created>1777539934185</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1777539934185</updated>
+      <workItem from="1782127912483" duration="7751000" />
+      <workItem from="1782215569799" duration="8469000" />
     </task>
     <task id="LOCAL-00017" summary="test modul breack email check">
       <option name="closed" value="true" />
@@ -518,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782131132206</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="main">
+      <option name="closed" value="true" />
+      <created>1782131928222</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1782131928222</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

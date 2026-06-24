@@ -24,14 +24,19 @@ class DnsModule:
 
         for tool, func in method:
             toolResult ={}
+            isError = False
             for record in recordTypes:
                 data = func(record)
+                if isinstance(data,dict) and "error" in data:
+                    isError = True
+                    toolResult = data
+                    break
                 if data:
                     toolResult[record] = data
 
             if toolResult:
                 result[tool] = toolResult
-                if self.mode =="default":
+                if self.mode =="default" and not isError:
                     return result
 
         if not result :
@@ -50,13 +55,13 @@ class DnsModule:
             return result
         except dns.resolver.NXDOMAIN :
             log.debug(f"dns-python error di record {recordType}, dengan error : domain tidak ditemukan ")
-            return None #domain tidak ditemukan
+            return None
         except dns.resolver.NoAnswer:
             log.debug(f"dns-python error di record {recordType}, dengan error : record domain tidak ditemukan ")
             return None #tidak ditemukan record tipe ini
         except Exception as e:
             log.debug(f"dns-python error di record {recordType}, dengan error : {str(e)} ")
-            return None
+            return {"error":f"dns_python error {str(e)}"}
 
     def method_dns_cloudflare(self, recordType):
 
@@ -80,9 +85,10 @@ class DnsModule:
                     return result
             else :
                 log.debug(f"error di modul dns, metode backup bagian request : {response.status_code}  - {response.text}")
+                return {"error":f"dns_cloudflare error {response.status_code}"}
         except Exception as e:
             log.debug(f"modul dns cloudflare error L {str(e)}")
-            return None
+            return {"error":f"dns_cloudflare error {str(e)}"}
 
 
 
