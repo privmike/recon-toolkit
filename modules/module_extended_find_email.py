@@ -28,7 +28,7 @@ class module_extended_find_email:
                 parsed_url = urlparse(url)
                 cleaned_url = parsed_url.netloc + parsed_url.path
                 if counter>=1:
-                    return {"message": "fnsh"}
+                    return final_results
                 counter +=1
 
                 if cleaned_url.endswith('/'):
