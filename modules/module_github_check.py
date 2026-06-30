@@ -115,7 +115,7 @@ class GithubCheckModule:
 
             gitleaks_cmd = ['gitleaks','dir',temp_repo_dir, '--report-path', temp_gitleaks_output_file_path,'--report-format','json']
 
-            try:
+            try:    
                 log.debug(f"running gitleaks")
                 gitleaks_process = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=600)
                 if gitleaks_process.returncode in [0,1]: #1 berati ketemu , 0 berati tidak ada

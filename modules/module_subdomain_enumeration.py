@@ -53,7 +53,7 @@ class SubdomainEnumerationModule:
 
     def method_amass(self):
         log.info(f"Running Module Subdomain Enumeration dengan method amass")
-        subdomain = set()
+        subdomain = set() 
         cmd_enum = ["amass", "enum","-active","-d",self.domain,"--nocolor","-timeout","10","-brute"]
         cmd_sub = ["amass","subs","-names","-d",self.domain,"-nocolor"]
         try:
