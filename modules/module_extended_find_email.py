@@ -22,14 +22,10 @@ class module_extended_find_email:
         log.info(f"Ditemukan {len(raw_urls)} URL web. Memulai eksekusi FindEmailModule...")
 
         final_results = {}
-        counter =0
         for url in raw_urls:
             try:
                 parsed_url = urlparse(url)
                 cleaned_url = parsed_url.netloc + parsed_url.path
-                if counter>=1:
-                    return final_results
-                counter +=1
 
                 if cleaned_url.endswith('/'):
                     cleaned_url = cleaned_url[:-1]

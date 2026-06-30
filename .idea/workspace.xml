@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="deeb7e8e-88eb-47c4-a78c-1d3b69355ba2" name="Changes" comment="revisi tambah fitur extended email find using google dorking result">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/module_extended_find_email.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/module_extended_find_email.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,15 +133,7 @@
       <workItem from="1782368016004" duration="4912000" />
       <workItem from="1782534721454" duration="3078000" />
       <workItem from="1782719024713" duration="4187000" />
-      <workItem from="1782780817993" duration="5077000" />
-    </task>
-    <task id="LOCAL-00024" summary="final report line missing fix for module_dorking.py">
-      <option name="closed" value="true" />
-      <created>1778665718477</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1778665718477</updated>
+      <workItem from="1782780817993" duration="5718000" />
     </task>
     <task id="LOCAL-00025" summary="fix error module_email_breach.py,dan module_ip.py">
       <option name="closed" value="true" />
@@ -527,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782788368345</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="revisi tambah fitur extended email find using google dorking result">
+      <option name="closed" value="true" />
+      <created>1782790441215</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1782790441215</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
